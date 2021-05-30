@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!--CSS link-->
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
+    <!--RESET-->
+    <link rel="stylesheet" href="https://meyerweb.com/eric/tools/css/reset/reset.css">    <!--CSS-->
+    <!--CSS-->
+    <!--header-->
+    <link rel="stylesheet" href="css/header-KK.css">
+    <!--footer-->
+    <link rel="stylesheet" href="css/footer-KK.css">
+    <!--pre-panier-->
+    <link rel="stylesheet" href="css/pre-panier.css">
+    <!--home-->
+    <link rel="stylesheet" href="css/home.css">
+    <title>KapuKeeki</title>
+</head>
+<body>
+    
+    <header >
+        
+        <nav>
+            <div id="header-white-block">
+                <!--Les différentes pages web du site-->
+                <div id="page">
+                    <ul>
+                        <a href="produits.html"><li>Nos produits</li></a>
+                        <a href="histoire.html"><li>Notre histoire</li></a>
+                        <a href="contact.html"><li>contact</li></a>
+                    </ul>
+                </div>
+
+                <!--Le menu burger-->
+                <svg id="menu" viewBox="0 0 100 80" width="20" height="20">
+                    <rect width="100" height="15" rx=10></rect>
+                    <rect y="30" width="100" height="15" rx=10></rect>
+                    <rect y="60" width="100" height="15" rx=10></rect>
+                </svg>
+
+                <!--Logo et nom du magasin-->
+                <a id="logo" href="home.html">
+                        <p>カップケーキ</p>
+                        <p>KapuKeeki</p>
+                </a>
+
+                <!--Panier du client-->
+                <div id="panier">
+                <img src="img/svg-icons/shopping-bag.svg" alt="image svg d'un sac de shopping avec des achats à l'intérieur, source flaticon">
+                    <p></p>
+                </div>
+                
+            </div>
+
+            <!--Décoration du bas du header-->
+            <div id="header-color-block"></div>
+        </nav>
+
+        <div id="pre-panier">
+
+            <div id="contenu-panier">
+
+                <p>panier (<span>3</span>)</p>
+                <img id="fermer-pre-panier" src="img/svg-icons/close.svg" alt="" srcset="">
+
+
+                <div id="tous-articles">
+                    <p>mes cupcakes (miam)</p>
+                    <div class="articles">
+
+                    <!--TOUS LES CUPCAKES DU PANIER ICI-->
+                    </div>
+
+                </div>
+
+                <div id="pre-panier-total">
+                    <p>Total <span>(TVA incluse)</span> </p>
+                    <p id="prix"><span>15,90 </span>€</p>
+                </div>
+
+                <form method="get" action="panier.html">
+                    <button id="pre-payer" type="submit">Payer</button>
+                </form>
+                
+            </div>
+
+            
+
+
+    </header>
+
+    <section id="hero-cupcake">
+        <div class="achat"><a href="produits.html"><p>Acheter maintenant</p></a></div>
+
+    </section>
+
+    <main>
+        <section id="texte1">
+            <p>Les meilleurs ingrédients uniquement</p>
+            <p>Il est important de savoir d’où proviennent tous les ingrédients que nous utilissons. Nous avons donc un partenariat avec des éleveurs et des producteurs locaux.</p>
+        </section>
+
+        <section id="top-sale">
+            <p>TOP DES VENTES</p>
+            <div id="top3">
+                <div><img src="img/chocoeggpuff-img.png" alt=""></div>
+                <div><img src="img/goldenpuff-img.png" alt=""></div>
+                <div><img src="img/chococherrypuff-img.png" alt=""></div>
+            </div>
+            <div class="achat">
+                <a href="produits.html"><p>Acheter maintenant</p></a>
+            </div>
+
+        </section>
+
+        <!--BONUS SI TEMPS
+        <section id="photo">
+            <div class="grey-background">
+                <p>Pour plus de plaisir suis n’oublie pas de nous suivre petit(e) gourmand(e)</p>
+                
+            </div>
+            <img src="/img/drip-img/grey drip.png" alt="dessin de effet de glaçage sur un gâteau">
+        </section>-->
+
+        <section id="service">
+            <div class="delivery">
+                <img class="p1" src="img/svg-icons/mini-fond-violet.svg" alt="mini fond">
+                <img class="p2" src="img/svg-icons/camion.svg" alt="icon d'un camion de livraison">
+                <p class="bold">LIVRAISON</p>
+                <p>Livraison gratuite à partir de 39€ d’acgat</p>
+            </div>
+
+            <div class="click">
+                <img class="p1" src="img/svg-icons/mini-fond-rose.svg" alt="mini fond">
+                <img class="p2" src="img/svg-icons/click.svg" alt="icon d'un sac avec un curseur, pour le click and collect">
+                <p class="bold">CLICK & COLLECT</p>
+                <p>Service de click and collect</p>
+            </div>
+            <div class="security">
+                <img class="p1" src="img/svg-icons/mini-fond-vert.svg" alt="mini fond">
+                <img class="p2" src="img/svg-icons/verrou.svg" alt="icon d'un cadena">
+                <p class="bold">PAIEMENT SÉCURISÉ</p>
+                <p>Plateforme CMCIC/3D Secure</p>
+            </div>
+        </section>
+
+        <section id="histoire">
+            <div class="histoire-text">
+            <p>Notre histoire</p>
+            <p>KapuKeeki est une enseigne de cupcake fondée depuis 2021, sa </p>
+            <p>créatrice Joey Bervin développeuse web junior vous raconte son</p>
+            <p>histoire</p>
+            <a href="histoire.html"><div><p>en savoir plus</p></div></a>
+        </div>
+            <img src="/img/svg-icons/deco3.svg" alt="ddécor de fond avec plusieurs carré et de plusieurs couleurs tonalité pastel">
+            <div class="blue">
+        
+        </div>
+        </section>
+
+        <section id="address">
+            <div class="store">
+                <img class="p1" src="/img/svg-icons/mini-fond-jaune.svg" alt="">
+                <img class="p2" src="/img/svg-icons/destination.svg" alt="icon pour itinéraire">
+                <p>1 Rue du général Ordinateur de Joey</p>
+                <p>98 329 Asus</p>
+            </div>
+            <div class="ouverture">
+                <div class="week">
+                    <img class="p1" src="img/svg-icons/mini-fond-bleu.svg" alt="">
+                    <img class="p2" src="/img/svg-icons/magasin.svg" alt="icon d'un magasin">
+                    <p>Ouvert du</p>
+                    <p>lundi au vendredi </p>
+                    <p>de 9h à 19h30</p>
+                </div>
+                <div class="week-end">
+                    <img class="p1" src="img/svg-icons/mini-fond-bleu.svg" alt="">
+                    <img class="p2" src="/img/svg-icons/magasin.svg" alt="icon d'un magasin">
+                    <p>le week-end</p>
+                    <p>le samedi : 10h à 19h30</p>
+                    <p>le dimanche : 10h à 12h30</p>
+                </div>
+            </div>
+        </section>
+
+
+
+
+
+       
+    </main>
+
+    
+
+    
+    <footer >
+
+
+        <img src="/img/DRIP1.jpg" alt="image avec un effet de décoration de gateaux qui coule">
+
+        
+        <div id="infos">
+            
+            <p>カップケーキ</p>
+            <p>KapuKeeki</p>
+                <ul>
+                    <a href="produits.html"><li>Nos produits</li></a>
+                    <a href="histoire.html"><li>Notre histoire</li></a>
+                    <a href="contact.html"><li>Contact</li></a>
+                </ul>
+                <div id="paiement">
+                    <a href="#"><img src="/img/svg-icons/visa.svg" alt="logo visa"></a>
+                    <a href="#"><img src="/img/svg-icons/paypal.svg" alt="logo paypal"></a>
+                    <a href="#"><img src="/img/svg-icons/meastro.svg" alt="logo meastro"></a>
+                    <a href="#"><img src="/img/svg-icons/american-express.svg" alt="logo american express"></a>
+                </div>
+        </div>
+
+        <div id="social-network">
+            <a href="#"><img src="/img/svg-icons/instagram.svg" alt="logo Instagram"></a>
+            <a href="#"><img src="/img/svg-icons/facebook.svg" alt="logo facebook"></a>
+            <a href="#"><img src="/img/svg-icons/youtube.svg" alt="logo youtube"></a>
+            <a href="#"><img src="/img/svg-icons/linkedin.svg" alt="logo linkedin"></a>
+        </div>
+
+        
+       <p class="copyright"> Copyright Bervin Joey - HETIC 2021</p>
+
+    </footer>
+
+    </div>
+    <!--JAVASCRIPT (header and footer)-->
+    <!--JS de la nav-->
+    <script src="js/navjs.js"></script>
+    <!--JS pour les produits-->
+    <script src="js/produits.js"></script>
+</body>
+</html>
