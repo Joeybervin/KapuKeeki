@@ -1,0 +1,229 @@
+/* Le "pre"-panier dans sa globalité (back-ground + div englobante)*/
+html.noScroll {
+    overflow-y: hidden;
+}
+div#pre-panier {
+    position:fixed;
+    width: 100vw;
+    height: 100vh;
+    max-width: 100%;
+    background-color: rgba(0, 0, 0, 0.164);
+    text-align: center;
+    
+}
+div#contenu-panier {
+    display: grid;
+    justify-content: space-around;
+    align-items: center;
+    justify-items: center;
+    grid-template-rows: 70px 1fr 1fr 1fr;/*80px 420px 90px 60px*/
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50vh;
+    transform: translateY(-50%);
+    width:min(850px, 70%);
+    height: 80vh;
+    border-radius:20px;
+    border: black solid 5px;
+    background-color: var(--white);
+    max-width: 100%;
+}
+/* l'option visible et invisible du pre-panier */
+div#pre-panier:not(.visible) {
+    display:none;
+}
+
+
+/* titre */
+div#contenu-panier > p {
+    position: relative;
+    margin-top:30px ;
+    font-family: 'Typo-Round-Bold';
+    font-size:min(2.5vw,4vw)
+}
+div#contenu-panier > p::before {
+    position: absolute;
+    left: -4vw;
+    content:'';
+    width: 20vw;
+    height: 3vw;
+    border-radius: 50px;
+    background-color: #babfe754;
+}
+/* image pour fermer le "pre"-panier*/
+div#contenu-panier > img#fermer-pre-panier {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+/* Section contenant le total des articles dans le panier*/
+div#tous-articles {
+    display: grid;
+    grid-template-rows: 40px 1fr;
+    width: 100%;
+    height: min(100px,70vh);
+    box-sizing: border-box;
+}
+div#tous-articles > p {
+    justify-self: start;
+    margin-left: 5vw;
+    margin-bottom: 0.5vw;
+    align-self: end;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    font-size: max(1vw, 10px);
+}
+div#tous-articles > div.articles {
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-content: space-around;
+    border-top: 2px solid black;
+    border-bottom: 3px solid black;
+    width: 45vw;
+    height: max(5.7vw,280px);
+
+}
+
+/* les articles ajoutés (photo, nom, prix etc: créer avec json + localstorage)*/
+div#tous-articles div.articles > div.cake {
+    display: inline-grid;
+    grid-template-columns: repeat(5, 1fr);
+    box-sizing: border-box;
+    padding-top: 10px;
+    
+}
+/*variation des couleurs des fonds des images*/
+div#tous-articles div.articles > div.cake > div[class^="photo"] {
+    display:grid;
+    width :max(5vw,35px);
+    height :max(5vw,35px);
+    border-radius: 15px;
+}
+div#tous-articles div.articles > div.cake > div.photofy {
+    background-color: var(--yellow);
+}
+div#tous-articles div.articles > div.cake > div.photoflg {
+    background-color: var(--lightGreen);
+}
+div#tous-articles div.articles > div.cake > div.photofdg {
+    background-color: var(--darkerGreen);
+}
+div#tous-articles div.articles > div.cake > div.photoflpi {
+    background-color: var(--lightPink);
+}
+div#tous-articles div.articles > div.cake > div.photofdpi {
+    background-color: var(--darkerPink);
+}
+div#tous-articles div.articles > div.cake > div.photoflpu {
+    background-color: var(--lightPurple);
+}
+div#tous-articles div.articles > div.cake > div.photofdpu {
+    background-color: var(--darkerPurple);
+}div#tous-articles div.articles > div.cake > div.photoflb {
+    background-color: var(--lightBlue);
+}div#tous-articles div.articles > div.cake > div.photofdb {
+    background-color: var(--darkerBlue);
+}
+
+
+div#tous-articles div.articles > div.cake > div[class^="photo"] > img {
+    justify-self: center;
+    align-self: center;
+    width :max(3vw,20px);
+    height :max(3vw,20px);
+}
+div#tous-articles div.articles > div.cake > div.produits-nom-prix {
+    margin-left: 5%;
+}
+div#tous-articles div.articles > div.cake > div.produits-nom-prix p {
+    font-family: 'Typo-Round-Bold' ,'Open Sans', sans-serif;
+    font-weight: 300;
+    margin-top: 8%;
+    font-size: max(1.2vw,10px);
+}
+div#tous-articles div.articles > div.cake > div.produits-nom-prix p:nth-child(2){
+    font-size: max(0.8vw,7px);
+    margin-top: 5px;
+}
+div#tous-articles div.articles > div.cake > input.pre-panier-quantite {
+    justify-self: end;
+    margin-left: 10px;
+    height:max(1.5vw, 15px);
+    width: max(3.5vw, 35px);
+    border: black solid 1px;
+    text-align: center;
+    font-family: 'Typo-Round-Bold' ,'Open Sans', sans-serif;
+    
+}
+div#tous-articles div.articles > div.cake > p.total-d-article {
+    font-family: 'Typo-Round-Bold' ,'Open Sans', sans-serif;
+    margin-left: 50px;
+    font-size: 15px;
+}
+div#tous-articles div.articles > div.cake > img.circle-cancel {
+    justify-self: end;
+    width :15px;
+    height :15px;
+    margin-right: 10px;
+}
+
+/* Section total du panier*/
+div#contenu-panier > div#pre-panier-total {
+    margin-top: 230px;
+    display: grid;
+    width: 70%;
+    grid-template-columns: 70% 30%;
+}
+div#contenu-panier div#pre-panier-total > p {
+    justify-self: start;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    font-size: max(1.5vw, 10px);
+}
+div#contenu-panier div#pre-panier-total > p > span {
+    font-size: max(0.5vw, 5px);
+    font-weight: 300;
+}
+div#contenu-panier div#pre-panier-total > p#prix {
+    justify-self: end;
+}
+div#contenu-panier div#pre-panier-total > p#prix > span {
+    font-family: 'Typo-Round-Bold';
+    font-size: max(1.2vw, 15px);
+}
+
+/* boutton pour passer à la page de paiement*/
+div#contenu-panier > form > button#pre-payer {
+    margin-top: 40px;
+    height:40px;
+    width:min(30vw,170px);
+    background-color: var(--lightGreen);
+    border-radius: 5px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 750px) {
+
+    div#tous-articles div.articles > div.cake {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    div#tous-articles div.articles > div.cake > div[class^="photo"] {
+        display:none;
+    }
+    div#tous-articles div.articles > div.cake > div.produits-nom-prix {
+        margin-left: 10px;
+    }
+    div#tous-articles div.articles > div.cake > p.total-d-article {
+        display:none;
+    }
+}

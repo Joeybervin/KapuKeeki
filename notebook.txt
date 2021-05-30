@@ -1,0 +1,261 @@
+div#panier::before {
+    content: '';
+    position:absolute;
+    background-color: var(--black);
+    width : calc(var(--bag-svg-size) / 2);
+    height: calc(var(--bag-svg-size) / 2);
+    border-radius: 100%;
+    right: -7px;
+    bottom: -5px;
+    text-align: center;
+}
+div#panier p {
+    position:absolute;
+    left:0;
+    right:0;
+    margin-left: auto;
+    margin-right:auto;
+    bottom: 0px;
+    color:var(--white);
+    font-family:'Open Sans', sans-serif;
+    font-size:12px;
+}
+
+<div id="cake">
+
+    <div class="photo">
+        <img src="img/cotoncandypuff-img.png" alt="">
+    </div>
+
+    <div id="produits-nom-prix">
+        <p>Cotoncandypuff</p>
+        <p>unitée <span>3,80</span>€</p>
+    </div>
+
+    <input class="pre-panier-quantite" type="number" step="1" max="9" min="1">
+    <p class="total-d-article"><span>3,80</span>€</p>
+
+    <img id="circle-cancel" src="img/svg-icons/circle-cancel.svg" alt="croix pour supprimer l'article du panier">
+
+</div>
+
+var cupcakeEnCommande = localStorage.getItem("cupcakeEnCommande")
+
+if (cupcakeEnCommande =! null) {
+    
+    
+
+    if (Cupcakecliquer.nom == undefined) {
+        localStorage.setItem("cupcakeEnCommande", JSON.stringify(Cupcakecliquer))
+    }
+        Cupcakecliquer.enCommande += 1
+        console.log(Cupcakecliquer.enCommande)
+}
+else {
+    localStorage.setItem("cupcakeEnCommande", JSON.stringify(Cupcakecliquer))
+}
+
+localStorage.setItem("cupcakeEnCommande", JSON.stringify(Cupcakecliquer))
+
+   /* Je transforme mon JSON (qui est maintenant un objet javaScript) en chaîne de caractère */
+   var monStock = JSON.stringify(Cupcakecliquer)
+   /* Je créer un espace de stockage "listeDeLaCommande" avec cette chaîne de caractères  */
+   localStorage.setItem("listeDeLaCommande", monStock)
+   /* Je récupère à l'espace de stockage "listeDeLaCommande" la chaîne de caractère */
+   monStock = localStorage.getItem("listeDeLaCommande")
+   /* Je retransforme la chaîne de caractère en un objet javaScript */
+   // Afin qu'elle puisse être lu par le Javascript
+   Cupcakecliquer = JSON.parse(monStock)
+
+   console.log(Cupcakecliquer)
+
+   function inventaire (Cupcakecliquer) {
+    // Si déjà implémenté nous cherchons à récupérer le cupcake se trouvant déjà dans notre localStorage
+    let listeDeLaCommande = JSON.parse(localStorage.getItem("cupcakesCommander"))
+    // Dans un premier temps nous boulons vérifier si notre localStorage ne possède pas déjà un cupcake
+    //Si oui
+    if (listeDeLaCommande) {
+
+        for (var i = 0; i < listeDeLaCommande.length ; i++) {
+            if (listeDeLaCommande[i].id === listeDeLaCommande[i].id) {
+                listeDeLaCommande[i].enCommande += 1
+            }
+        }
+        
+        // Si mon tableau à téjà une valeur j'ajoute une nouvelle au tableau
+        // J'ajoute dans mon tableau les informations du cupcake récupérer par le click sur le boutton
+        listeDeLaCommande.push(Cupcakecliquer);
+        listeDeLaCommande[i].enCommande += 1
+        // Je stocke ces informations directement dans mon localStorage
+        // Je transforme donc les données en chaîne de caractères
+        localStorage.setItem("cupcakesCommander" , JSON.stringify(listeDeLaCommande));
+        console.log(listeDeLaCommande)
+    }
+    
+    //si non (pas de cupcakes dans le localStorage)
+    else {
+        // Je créer un tableau où sera ajouter tous les cupcakes du client
+        listeDeLaCommande = [];
+        // J'ajoute dans mon tableau les informations du cupcake récupérer par le click sur le boutton
+        listeDeLaCommande.push(Cupcakecliquer);
+        // Je stocke ces informations directement dans mon localStorage
+        // Je transforme donc les données en chaîne de caractères
+        localStorage.setItem("cupcakesCommander" , JSON.stringify(listeDeLaCommande));
+
+        console.log(listeDeLaCommande)
+    }
+
+
+}
+
+//Fonction qui renouvelle l'état de la commande (en implémentant dans localStorage, les articles choisis et leur quantité)
+function inventaire (Cupcakecliquer) {
+    // Si déjà implémenté nous cherchons à récupérer le cupcake se trouvant déjà dans notre localStorage
+    let listeDeLaCommande = JSON.parse(localStorage.getItem("cupcakesCommander"))
+    // Dans un premier temps nous boulons vérifier si notre localStorage ne possède pas déjà un cupcake
+    //Si oui
+    
+    if (listeDeLaCommande) {
+        // Je regarde si un même cupcake existe déjà et si oui ajoute +1 sur sa commande
+        for (var i = 0; i < listeDeLaCommande.length ; i++) {
+            if (listeDeLaCommande[i].id === listeDeLaCommande[i].id) {
+                listeDeLaCommande[i].enCommande += 1
+                
+            }}
+            if (listeDeLaCommande) {
+                // Si mon tableau à téjà une valeur j'ajoute une nouvelle au tableau
+                // J'ajoute dans mon tableau les informations du cupcake récupérer par le click sur le boutton
+                listeDeLaCommande.push(Cupcakecliquer);
+                listeDeLaCommande[i].enCommande += 1
+                // Je stocke ces informations directement dans mon localStorage
+                localStorage.setItem("cupcakesCommander" , JSON.stringify(listeDeLaCommande));
+                console.log(listeDeLaCommande)
+            }
+    }
+    
+    //si non (pas de cupcakes dans le localStorage)
+    else {
+        // Je créer un tableau où sera ajouter tous les cupcakes du client
+        listeDeLaCommande = [];
+        // J'ajoute dans mon tableau les informations du cupcake récupérer par le click sur le boutton
+        listeDeLaCommande.push(Cupcakecliquer);
+        Cupcakecliquer.enCommande += 1
+        // Je stocke ces informations directement dans mon localStorage
+        localStorage.setItem("cupcakesCommander" , JSON.stringify(listeDeLaCommande));
+
+        console.log(listeDeLaCommande)
+    }
+
+}
+
+
+
+
+
+
+function AjouterAupanier(data) {
+    var divCake = document.createElement("div")
+    divCake.className = "cake"
+    var divFondPhoto = document.createElement("div")
+    divFondPhoto.className = data.couleur
+    var imgCupcake = document.createElement("img")
+    imgCupcake.src = data.photoProduit
+    imgCupcake.alt = data.description
+    var divPorduitsNomPrix = document.createElement("div")
+    divPorduitsNomPrix.className = "produits-nom-prix"
+    var p1 = document.createElement("p")
+    var p2 = document.createElement("p")
+    var spanP2 = document.createElement("span")
+    var inputQuantite = document.createElement("input")
+    inputQuantite.className = "pre-panier-quantite"
+    inputQuantite.type = "number"
+    inputQuantite.step = "1"
+    inputQuantite.max = 9
+    inputQuantite.min = 0
+    var p3 = document.createElement("p")
+    p3.className = "total-d-article"
+    var spanP3 = document.createElement("span")
+    var imgCircleCancel = document.createElement("img")
+    imgCircleCancel.className = "circle-cancel"
+    imgCircleCancel.src = "img/svg-icons/circle-cancel.svg"
+    imgCircleCancel.alt = "croix pour supprimer l'article du panier"
+
+    p1.innerHTML = data.nom
+    p2.innerHTML = "unité"
+    spanP2.innerHTML = data.prix
+    p2.innerHTML = "€"
+    inputQuantite.value = data.enCommande
+    spanP3.innerHTML = parseInt(data.enCommande) * parseFloat(data.prix)
+    p3.innerHTML = "€"
+  console.log(data)
+
+    divCake.appendChild(divFondPhoto)
+    divFondPhoto.appendChild(imgCupcake)
+    divCake.appendChild(divPorduitsNomPrix)
+    divPorduitsNomPrix.appendChild(p1)
+    divPorduitsNomPrix.appendChild(p2)
+    p2.appendChild(spanP2)
+    divCake.appendChild(inputQuantite)
+    divCake.appendChild(p3)
+    p3.appendChild(spanP3)
+    divCake.appendChild(imgCircleCancel)
+  
+    pre_panier.appendChild(divCake)
+}
+
+
+
+function listeArticles(Cupcakecliquer) {
+
+    let produits = localStorage.getItem("TousLesProduitsAjouter")
+
+    if (produits != null) {
+        if (Cupcakecliquer.id == undefined) {
+            localStorage.setItem("TousLesProduitsAjouter", JSON.stringify(Cupcakecliquer))
+        }
+        Cupcakecliquer.enCommande += 1
+    }
+    else {
+        Cupcakecliquer.enCommande = 1
+        localStorage.setItem("TousLesProduitsAjouter", JSON.stringify(Cupcakecliquer))
+    }
+    
+    localStorage.setItem("TousLesProduitsAjouter", JSON.stringify(Cupcakecliquer))
+
+}
+
+//Fonction qui renouvelle l'état de la commande (en implémentant dans localStorage, les articles choisis et leur quantité)
+function listeArticles (Cupcakecliquer) {
+    
+    let listeDeLaCommande = JSON.parse(localStorage.getItem("cupcakesCommander"))
+
+    if (listeDeLaCommande) {
+        for (var i = 0 ; i < listeDeLaCommande.length ; i++){
+            // Je regarde si un même cupcake existe déjà et si oui ajoute +1 sur sa commande
+            if (listeDeLaCommande[i].id == Cupcakecliquer.id) {
+                listeDeLaCommande[i].enCommande += 1
+                // Je stocke ces informations directement dans mon localStorage
+                localStorage.setItem("cupcakesCommander" , JSON.stringify(listeDeLaCommande));
+            }
+            else {
+                // Si mon tableau à téjà une valeur j'ajoute une nouvelle au tableau
+                listeDeLaCommande[i].enCommande += 1
+                listeDeLaCommande.push(Cupcakecliquer);
+                
+            }
+
+
+        }
+       
+    }
+    else {
+        // Je créer un tableau où sera ajouter tous les cupcakes du client
+        listeDeLaCommande = [];
+        listeDeLaCommande.push(Cupcakecliquer);
+        Cupcakecliquer.enCommande += 1
+        localStorage.setItem("cupcakesCommander" , JSON.stringify(listeDeLaCommande));
+
+        console.log(listeDeLaCommande)
+    }
+
+}
