@@ -10,15 +10,18 @@
     <link rel="stylesheet" href="https://meyerweb.com/eric/tools/css/reset/reset.css">    <!--CSS-->
     <!--CSS-->
     <!--header-->
-    <link rel="stylesheet" href="header-KK.css">
+    <link rel="stylesheet" href="css/header-KK.css">
     <!--footer-->
-    <link rel="stylesheet" href="footer-KK.css">
+    <link rel="stylesheet" href="css/footer-KK.css">
     <!--pre-panier-->
-    <link rel="stylesheet" href="pre-panier.css">
+    <link rel="stylesheet" href="css/pre-panier.css">
 
     <!--Dans le main-->
     <!--pdoduits-->
-    <link rel="stylesheet" href="produits.css">
+    <link rel="stylesheet" href="css/produits.css">
+    
+    <!-- formulaire information de livraison client -->
+    <link rel="stylesheet" href="css/infos-client.css">
     
     <title>KapuKeeki - nos cupcakes</title>
 </head>
@@ -33,7 +36,7 @@
                     <ul>
                         <a href="produits.html"><li>Nos produits</li></a>
                         <a href="histoire.html"><li>Notre histoire</li></a>
-                        <a href="contact.html"><li>contact</li></a>
+                        <a href="contact.html"><li>Contact</li></a>
                     </ul>
                 </div>
 
@@ -53,7 +56,7 @@
                 <!--Panier du client-->
                 <div id="panier">
                 <img src="img/svg-icons/shopping-bag.svg" alt="image svg d'un sac de shopping avec des achats à l'intérieur, source flaticon">
-                    <p>0</p>
+                    <p></p>
                 </div>
                 
             </div>
@@ -62,85 +65,27 @@
             <div id="header-color-block"></div>
         </nav>
 
+
+
         <div id="pre-panier">
 
             <div id="contenu-panier">
 
                 <p>panier (<span></span>)</p>
-                <img id="fermer-pre-panier" src="img/svg-icons/close.svg" alt="" srcset="">
+                <img class="fermer-pre-panier" src="img/svg-icons/close.svg" alt="" srcset="">
 
 
                 <div id="tous-articles">
                     <p>mes cupcakes (miam)</p>
                     <div class="articles">
-
-
-
-
                         <!--TOUS LES CUPCAKES DU PANIER ICI-->
-                        
-                        
-                        <div class="cake">
-
-                            <div class="photofdpi">
-                                <img src="img/cotoncandypuff-img.png" alt="">
-                            </div>
-
-                            <div class="produits-nom-prix">
-                                <p>Cotoncandypuff</p>
-                                <p>unitée <span>3,80</span>€</p>
-                            </div>
-
-                            <input class="pre-panier-quantite" type="number" step="1" max="9" min="1">
-                            <p class="total-d-article"><span>3,80</span>€</p>
-
-                            <img class="circle-cancel" src="img/svg-icons/circle-cancel.svg" alt="croix pour supprimer l'article du panier">
-
-                         </div>
-                        <div class="cake">
-
-                            <div class="photoflb">
-                                <img src="img/chocoeggpuff-img.png" alt="">
-                            </div>
-
-                            <div class="produits-nom-prix">
-                                <p>chocoeggpuff</p>
-                                <p>unitée <span>3,80</span>€</p>
-                            </div>
-
-                            <input class="pre-panier-quantite" type="number" step="1" max="9" min="1">
-                            <p class="total-d-article"><span>3,80</span>€</p>
-
-                            <img class="circle-cancel" src="img/svg-icons/circle-cancel.svg" alt="croix pour supprimer l'article du panier">
-
-                         </div>
-                        
-                        <div class="cake">
-
-                            <div class="photofy">
-                                <img src="img/chocoheartpuff-img.png" alt="">
-                            </div>
-
-                            <div class="produits-nom-prix">
-                                <p>Chocoheartpuff</p>
-                                <p>unitée <span>3,80</span>€</p>
-                            </div>
-
-                            <input class="pre-panier-quantite" type="number" step="1" max="9" min="1">
-                            <p class="total-d-article"><span>3,80</span>€</p>
-
-                            <img class="circle-cancel" src="img/svg-icons/circle-cancel.svg" alt="croix pour supprimer l'article du panier">
-
-                         </div>
-
-                        
                     </div>
 
                 </div>
 
                 <div id="pre-panier-total">
                     <p>Total <span>(TVA incluse)</span> </p>
-                    <p id="prix"><span>00,00 </span>€</p>
+                    <p id="prix"><span>15,90 </span>€</p>
                 </div>
 
                 <form method="get" action="panier.html">
@@ -148,7 +93,60 @@
                 </form>
                 
             </div>
+        
 
+            <div id="cadre">
+
+                <p> Mes informations</p>
+                <img class="fermer-pre-panier" src="img/svg-icons/close.svg" alt="croix pour fermer la page">
+
+                <form action="" method="post" target="_self">
+                    <div id="premier">
+                        <div>
+                            <label for="nom">Nom</label>
+                            <input id="nom" name="nom" max="25" type="text">
+
+                            <label for="prenom">Prenom</label>
+                            <input id="prenom" name="prenom" max="25" type="text">
+                        </div>
+
+                        <div>
+                            <label for="tel">tel</label>
+                            <input id="tel" name="tel" max-length="10" type="tel">
+
+                            <label for="mail">e-mail</label> 
+                            <input id="mail" name="mail" type="email">
+                        </div>
+                    </div>
+
+                    <div id="deuxieme">
+                        <label for="adresse">adresse</label>
+                        <input id="adresse" name="adresse" max="55" type="text">
+                    </div>
+
+                    <div id="troisieme">
+
+                        <label for="cp">code postale</label>
+                        <input id="cp" name="cp" type="number" max="5" min="5">
+        
+                        <label for="ville">ville</label>
+                        <input id="ville" name="ville" max="25" type="text">
+
+                    </div>
+
+                    <div id="quatrieme">
+                        <label for="autrechose">informations complémentaires</label>
+                        <input id="autrechose" name="autrechose" max="50"type="text">
+                    </div>
+
+                    <div id="sixieme">
+                        <p>“ Vous y êtes presques, à vous les cupcakes imaginaires ”</p>
+
+                        <button type="submit">Envoyer</button>
+                    </div>
+
+                </form>
+            </div>
             
 
 
@@ -176,6 +174,7 @@
             <p>カップケーキ</p>
             <p>KapuKeeki</p>
                 <ul>
+                    <a href="homr.html"><li>Accueil</li></a>
                     <a href="produits.html"><li>Nos produits</li></a>
                     <a href="histoire.html"><li>Notre histoire</li></a>
                     <a href="contact.html"><li>Contact</li></a>
@@ -192,7 +191,6 @@
             <a href="#"><img src="/img/svg-icons/instagram.svg" alt="logo Instagram"></a>
             <a href="#"><img src="/img/svg-icons/facebook.svg" alt="logo facebook"></a>
             <a href="#"><img src="/img/svg-icons/youtube.svg" alt="logo youtube"></a>
-            <a href="#"><img src="/img/svg-icons/linkedin.svg" alt="logo linkedin"></a>
         </div>
 
         
