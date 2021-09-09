@@ -1,0 +1,91 @@
+main{
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100vw;
+    max-width: 100%;
+}
+
+
+main p.tittle {
+    position: relative;
+    margin-top:100px ;
+    font-family: 'Typo-Round-Bold';
+    font-size:5vw
+}
+main p.tittle::before {
+    position: absolute;
+    left: 30vw;
+    content:'';
+    width: 40vw;
+    height: 6vw;
+    border-radius: 50px;
+    background-color: #babfe754;
+
+}
+
+figure#bd figcaption {
+    position: absolute;
+    right: 0;
+    background: white;
+    border: 5px solid var(--darkerPink)
+}
+main div#cadre{
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top:120px;
+    margin-bottom:250px;
+    width: 70vw;
+    height:50vw;
+    border: solid 5px #ffe16b;
+    border-radius: 20px;
+    background-color:#ffe16b46 ;
+    padding-left: auto;
+    padding-right: auto;
+
+}
+
+main div#cadre div#text {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3vw;
+    border: solid 5px #ffe16b;
+    border-radius: 20px;
+    background-color: var(--white);
+    color: inherit;
+    width: 60vw;
+    font-family: 'Open Sans', sans-serif;
+    padding: 6vw 15px 15px 15px;
+    line-height:2v;
+    
+}
+
+main div#cadre div#text::before {
+    content :'';
+    position: absolute;
+    background: url(/img/svg-icons/JB.svg) no-repeat;
+    background-size: contain;
+    top: -9vw;
+    left: 0;
+    right:0;
+    margin-left: auto;
+    margin-right: auto;
+    height: max(15vw,90vw);
+    width: max(20vw, 90px);
+    z-index: 1;
+}
+main div#cadre div#text p:first-child {
+    padding-top: 10vw;
+}
+main div#cadre div#text p:last-child {
+    padding-bottom: 3vw;
+}
+main div#cadre div#text p {
+    font-size: 1.5vw;
+}
+
+
