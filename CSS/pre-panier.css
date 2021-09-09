@@ -2,6 +2,10 @@
 html.noScroll {
     overflow-y: hidden;
 }
+
+div#contenu-panier:not(.visible) {
+    display:none;
+}
 div#pre-panier {
     position:fixed;
     width: 100vw;
@@ -54,7 +58,7 @@ div#contenu-panier > p::before {
     background-color: #babfe754;
 }
 /* image pour fermer le "pre"-panier*/
-div#contenu-panier > img#fermer-pre-panier {
+div#contenu-panier > img.fermer-pre-panier {
     position: absolute;
     top: 20px;
     right: 20px;
