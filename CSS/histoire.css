@@ -9,7 +9,7 @@ main{
 
 main p.tittle {
     position: relative;
-    margin-top:100px ;
+    margin-top:10vw ;
     font-family: 'Typo-Round-Bold';
     font-size:5vw
 }
@@ -30,30 +30,43 @@ figure#bd figcaption {
     background: white;
     border: 5px solid var(--darkerPink)
 }
-main div#cadre{
+main div#cadremain{
     position: relative;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top:120px;
-    margin-bottom:250px;
-    width: 70vw;
-    height:50vw;
-    border: solid 5px #ffe16b;
+    margin: 0 auto;
+    margin-top:13vw;
+    margin-bottom:18vw;
+    width: max(70vw, 280px);
+    height:max(45vw, 190px);
+    border: solid 3.5px #ffe16b;
     border-radius: 20px;
     background-color:#ffe16b46 ;
-    padding-left: auto;
-    padding-right: auto;
-
+    padding: 0 auto;
 }
 
-main div#cadre div#text {
+main div#cadremain::before {
+    position: absolute;
+    top: -6vw;
+    right: 20vw;
+    content:"Enfin en réalité... C'est mon histoire !";
+    font-family: 'Open Sans', 'sans-serif';
+    font-weight: bold;
+    border: solid 2px var(--darkerPink);
+    background-color: white;
+    font-size: max(1vw, 9px);
+    width: max(7vw,70px);
+    box-shadow: rgba(0, 0, 0, 0.253) 2px 3px;
+    z-index:2;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+main div#cadremain div#text {
     position: absolute;
     left: 0;
     right: 0;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
     margin-top: 3vw;
-    border: solid 5px #ffe16b;
+    border: solid 3px #ffe16b;
     border-radius: 20px;
     background-color: var(--white);
     color: inherit;
@@ -64,7 +77,7 @@ main div#cadre div#text {
     
 }
 
-main div#cadre div#text::before {
+main div#cadremain div#text::before {
     content :'';
     position: absolute;
     background: url(/img/svg-icons/JB.svg) no-repeat;
@@ -72,20 +85,33 @@ main div#cadre div#text::before {
     top: -9vw;
     left: 0;
     right:0;
-    margin-left: auto;
-    margin-right: auto;
-    height: max(15vw,90vw);
+    margin: 0 auto;
+    height: max(20vw,90px);
     width: max(20vw, 90px);
     z-index: 1;
 }
-main div#cadre div#text p:first-child {
-    padding-top: 10vw;
+
+main div#cadremain div#text::after {
+    content: 'Merci !';
+    position: absolute;
+    left: 0;
+    right:0;
+    margin: 0 auto;
+    bottom: -2vw;
+    font-family: 'Typo-Round-Bold';
+    font-size: max(3vw,15px);
 }
-main div#cadre div#text p:last-child {
+main div#cadremain div#text p:first-child {
+    padding-top: min(100px,12vw);
+}
+main div#cadremain div#text p:last-child {
     padding-bottom: 3vw;
 }
-main div#cadre div#text p {
+main div#cadremain div#text p {
     font-size: 1.5vw;
 }
+
+
+
 
 
