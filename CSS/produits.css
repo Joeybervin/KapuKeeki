@@ -9,8 +9,8 @@ main{
 main div#tittle{
     margin-left: auto;
     margin-right: auto;
-    width:max(50vw,100px);
-    height:15vw;
+    width:max(30vw,220px);
+    height:max(4vw,35px);
     background-color: #c1e8dc80;
     border-radius: 1100px;
     z-index:-1;
@@ -22,12 +22,11 @@ main div#tittle::before {
     position: absolute;
     left: 0;
     right: 0;
-    top:max(16vw,190px);
     margin-left: auto;
     margin-right: auto;
     font-family: 'Typo-Round-Bold';
     color:black;
-    font-size: max(4vw,30px);
+    font-size: max(3.5vw,30px);
   
     
 }
