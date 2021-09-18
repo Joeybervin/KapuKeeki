@@ -1,34 +1,31 @@
 
-main{
+/* main{
     text-align: center;
     margin-left: auto;
     margin-right: auto;
     width: 100vw;
     max-width: 100%;
-}
+} */
 
-
+/* ________ TITRE DE LA PAGE _________ */
 main p.tittle {
-    
-    margin-top:40px ;
-    font-family: 'Typo-Round-Bold';
-    font-size:3vw;
+    /* placement */
+    text-align: center;
+    margin: 0 auto;
+    margin-top:4vw ;
     margin-bottom:5vw;
-
-}
-main p.tittle::before {
-    position: absolute;
-    left: 42.5vw;
-    content:'';
+    border-radius:30px;
+    /* apparence */
     width: 15vw;
-    height: 4vw;
-    border-radius: 50px;
-    background-color: #babfe754;
-
+    font-size:3vw;
+    font-family: 'Typo-Round-Bold';
+    background-color:var(--lightBlue);
 }
+
 
 main > div#ToutLePanier{
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-evenly;
     text-align: left;
     width: 100vw;
