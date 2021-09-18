@@ -7,6 +7,8 @@ div#contenu-panier:not(.visible) {
     display:none;
 }
 div#pre-panier {
+    display:flex;
+    align-items: center;
     width: 100vw;
     height: 100vh;
     max-width: 100%;
@@ -15,20 +17,14 @@ div#pre-panier {
     
 }
 div#contenu-panier {
-    display: grid;
-    justify-content: space-around;
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-items: center;
-    grid-template-rows: 70px 1fr 1fr 1fr;/*80px 420px 90px 60px*/
     position: absolute;
     left: 0;
     right: 0;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 50vh;
-    transform: translateY(-50%);
-    width:min(850px, 70%);
-    height: 80vh;
+    margin: 0 auto;
+    width:min(850px, 90%);
     border-radius:20px;
     border: black solid 5px;
     background-color: var(--white);
@@ -45,17 +41,12 @@ div#contenu-panier > p {
     position: relative;
     margin-top:30px ;
     font-family: 'Typo-Round-Bold';
-    font-size:min(2.5vw,4vw)
-}
-div#contenu-panier > p::before {
-    position: absolute;
-    left: -4vw;
-    content:'';
-    width: 20vw;
-    height: 3vw;
-    border-radius: 50px;
+    font-size:min(35px,6vw);
     background-color: #babfe754;
+    padding: 1% 5%;
+    border-radius:30px
 }
+
 /* image pour fermer le "pre"-panier*/
 div#contenu-panier > img.fermer-pre-panier {
     position: absolute;
@@ -69,6 +60,7 @@ div#contenu-panier > img.fermer-pre-panier {
 /* Section contenant le total des articles dans le panier*/
 div#tous-articles {
     display: grid;
+    justify-content: center;
     grid-template-rows: 40px 1fr;
     width: 100%;
     height: min(100px,70vh);
@@ -76,12 +68,12 @@ div#tous-articles {
 }
 div#tous-articles > p {
     justify-self: start;
+    align-self: end;
     margin-left: 5vw;
     margin-bottom: 0.5vw;
-    align-self: end;
     font-family: 'Open Sans', sans-serif;
     font-weight: 300;
-    font-size: max(1vw, 10px);
+    font-size: min(15px,2.5vw );
 }
 div#tous-articles > div.articles {
     overflow-y: auto;
@@ -90,7 +82,7 @@ div#tous-articles > div.articles {
     align-content: space-around;
     border-top: 2px solid black;
     border-bottom: 3px solid black;
-    width: 45vw;
+    width: min(700px,75vw);
     height: max(5.7vw,280px);
 
 }
@@ -205,7 +197,7 @@ div#contenu-panier div#pre-panier-total > p#prix > span {
 
 /* boutton pour passer à la page de paiement*/
 div#contenu-panier > form > button#pre-payer {
-    margin-top: 40px;
+    margin: 25% 0;
     height:40px;
     width:min(30vw,170px);
     background-color: var(--lightGreen);
@@ -213,6 +205,7 @@ div#contenu-panier > form > button#pre-payer {
     font-family: 'Open Sans', sans-serif;
     font-weight: 700;
     cursor: pointer;
+    justify-self: start;
 }
 
 @media screen and (max-width: 750px) {
