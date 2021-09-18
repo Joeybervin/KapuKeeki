@@ -156,7 +156,7 @@
         <div id="ToutLePanier">
             
             <div id="CoteProduits">
-                <div id="ListeDuPanier">
+                <!-- Contenu du panier du client -->
                     <div class="produit">
                         <div class="photoProduits">
                             <img src="img/chococherrypuff-img.png" alt="">
@@ -254,29 +254,10 @@
                         <img src="img/svg-icons/close.svg" alt="">
                     </div>
 
-                </div>
-
-                <form class="code" method="POST">
-                    <div>
-                        <img src="img/svg-icons/etiquette.svg" alt="">
-                        <label for="code">code promo</label>
-                    </div>
-                    <div class="validationCode">
-                        <input id="code" type="text" name="code" id="code">
-                        <button>OK</button>
-                    </div>
-                </form>
-
-                <form class="autre" method="POST">
-                    <div>
-                        <img src="img/svg-icons/note.svg" alt="">
-                        <label for="autre">allergies, autres</label>
-                    </div>
-                    <textarea name="autre" id="autre"></textarea>
-                </form>
-
+                
             </div>
 
+            <!-- Affichage du prix total + bouton pour finaliser -->
             <div id="CotePrix">
                 <div id="Total">
                     <ul>
@@ -292,8 +273,32 @@
                     <p>Total</p>
                     <p>0 €</p>
                 </div>
-                <button onclick="coco()" type="submit" >Payer</button>
+                <button onclick="coco()" type="submit" >Commander</button>
             </div>
+
+            <!-- 
+                Pour entrer un codee de résuction 
+                 <form class="code" method="POST">
+                    <div>
+                        <img src="img/svg-icons/etiquette.svg" alt="">
+                        <label for="code">code promo</label>
+                    </div>
+                    <div class="validationCode">
+                        <input id="code" type="text" name="code" id="code">
+                        <button>OK</button>
+                    </div>
+                </form>
+
+                 Pour entrer un renseignement supplémentaire à la commande 
+                <form class="autre" method="POST">
+                    <div>
+                        <img src="img/svg-icons/note.svg" alt="">
+                        <label for="autre">allergies, autres</label>
+                    </div>
+                    <textarea name="autre" id="autre"></textarea>
+                </form>
+
+             -->
         </div>
 
         

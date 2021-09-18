@@ -1,12 +1,3 @@
-
-/* main{
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    width: 100vw;
-    max-width: 100%;
-} */
-
 /* ________ TITRE DE LA PAGE _________ */
 main p.tittle {
     /* placement */
@@ -17,43 +8,44 @@ main p.tittle {
     border-radius:30px;
     /* apparence */
     width: 15vw;
-    font-size:3vw;
+    font-size:min(3vw,4.5vw);
     font-family: 'Typo-Round-Bold';
     background-color:var(--lightBlue);
 }
 
-
+/* ____ Enveloppe globale du panier ____ */
 main > div#ToutLePanier{
+    position: relative;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    text-align: left;
     width: 100vw;
     max-width: 100%;
+    padding-top: 25px;
 }
 
-
-/* "mon panier" au dessus de la liste d'articles du client */
-main > div#ToutLePanier > div#CoteProduits::before {
+/* ___ "mon panier" au dessus de la liste d'articles du client ____*/
+main > div#ToutLePanier::before {
+    position: absolute;
     content : 'mon panier';
     font-family: 'Typo-Round-Light';
     font-size: 0.8em;
-    margin-left: 30px;
-    margin-bottom: 60px;
+    top: 0;
+    left: 8vw;
 }
 
 /* PARTIE : liste d'articles du client */
-
-main > div#ToutLePanier > div#CoteProduits > div#ListeDuPanier {
+main > div#ToutLePanier > div#CoteProduits {
     border-top: black 2px solid;
     border-bottom: black 2px solid;
-    width: 700px;
+    width: max(60vw, 330px);
     height: 400px;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
-
-div#ListeDuPanier > div.produit {
+/* ___________ Séparateur des produits _______________ */
+/* enveloppe globale de la liste (apparence général) */
+div#CoteProduits > div.produit {
     display: flex;
     justify-content: space-between;
     height: 100px;
@@ -62,39 +54,47 @@ div#ListeDuPanier > div.produit {
     font-family: 'Typo-Round-Light' ;
     
 }
-/* 1er partie */
-div#ListeDuPanier > div.produit > div.photoProduits {
+/* 1er partie : PHOTO DU PRODUIT */
+/* FOND */
+div#CoteProduits > div.produit > div.photoProduits {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius: 10px;
-    width: 80px;
-    height: 80px;
+    width: max(6vw,60px);
+    height: max(6vw,60px);
     
     background-color: var(--yellow);
-    text-align: center;
 }
-div#ListeDuPanier > div.produit > div.photoProduits > img {
-    width: 60px;
-    height: 60px;
-    margin-top: 10px;
+/* IMAGE */
+div#CoteProduits > div.produit > div.photoProduits > img {
+    width: max(4vw,40px);
+    height: max(4vw,40px);
 }
-/* 2eme partie */
-div#ListeDuPanier > div.produit > div.produits p:first-child {
+/* 2eme partie : NOM ET PRIX DE L'ARTICLE */
+/* nom de l'article */
+div#CoteProduits > div.produit > div.produits p:first-child {
     font-weight: bold;
     margin-bottom: 10px;
-    font-size: 1em;
+    font-size: max(1.2vw, 10px);
 }
-div#ListeDuPanier > div.produit > div.produits p:last-child {
-    font-size: 0.7em;
+/* Prix de l'article */
+div#CoteProduits > div.produit > div.produits p:last-child {
+    font-size: max(1vw, 10px);
 }
-/* 3eme partie */
-div#ListeDuPanier > div.produit > input {
+/* 3eme partie : QUANTITÉ*/
+div#CoteProduits > div.produit > input {
     text-align: center;
     font-family: 'Typo-Round-Light' ;
-    height : 25px;
+    height : 20px;
+    width: max(3vw,30px);
 }
-div#ListeDuPanier > div.produit > p {
-    font-size: 0.8em;
+/* 4eme partie : PRIX * QUANTITÉ DE UN ARTICLE */
+div#CoteProduits > div.produit > p {
+    font-size: max(1.2vw, 13px);
 }
-div#ListeDuPanier > div.produit > img {
+/* 5eme partie : LA CROIX (supprimer) */
+div#CoteProduits > div.produit > img {
     width: 10px;
     align-self: flex-start;
     margin-right: 10px;
