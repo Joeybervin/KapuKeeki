@@ -6,33 +6,22 @@ div#cadre:not(.visible) {
 /* Background */
 div#pre-panier {
     position:relative;
-    width: 100vw;
-    height: 100vh;
-    max-width: 100%;
-    background-color: rgba(0, 0, 0, 0.164);
-    text-align: center;
+    overflow-y: scroll;
 }
 
 /* Encadré à changé au niveau du grid */
  div#cadre {
-    display: grid;
-    justify-content: space-around;
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-items: center;
-    grid-template-rows: 60px 1fr;/*80px 420px 90px 60px*/
     position: absolute;
     left: 0;
     right: 0;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 50vh;
-    transform: translateY(-50%);
-    width:min(850px, 70%);
-    height: 80vh;
+    margin: 0 auto;
+    width:min(850px, 90%);
     border-radius:20px;
     border: black solid 5px;
     background-color: var(--white);
-    max-width: 100%;
 }
 
 /* titre */
@@ -40,17 +29,10 @@ div#cadre  > p {
     position: relative;
     margin-top:30px ;
     font-family: 'Typo-Round-Bold';
-    font-size:min(2vw,3.5vw)
-}
-div#cadre > p::before {
-    position: absolute;
-    left: -2vw;
-    content:'';
-    width: 20vw;
-    height: 2vw;
-    border-radius: 50px;
-    background-color: #c1e8dc50;
-    z-index:-1;
+    font-size:min(35px,6vw);
+    background-color: #babfe754;
+    padding: 1% 5%;
+    border-radius:30px
 }
 
  /* Le bouton pour fermer et ouvrir la page */
@@ -76,7 +58,7 @@ div#cadre > form label {
     padding: 0 5px;
     font-family: 'Typo-Round-bold';
     letter-spacing: 2px;
-    font-size: 18px;
+    font-size: max(1.2vw, 15px)
 }
 div#cadre > form label[for^="nom"] {
     color: var(--darkerPink);
@@ -119,11 +101,10 @@ div#cadre > form label[for^="autrechose"] {
     /* text-shadow: -1px 0 rgb(255, 0, 255), 0 1px rgb(255, 0, 255), 1px 0 rgb(255, 0, 255), 0 -1px rgb(255, 0, 255); */
 }
 div#cadre > form input {
-    
     border: 3px solid black;
     border-radius: 40px;
-    height: 35px;
-    width: 220px;
+    height: max(2vw, 25px);
+    width: max(14.5vw, 150px);
     margin-top: 35px;
     margin-right: 25px;
     background-color:white;
@@ -147,7 +128,7 @@ div#cadre > form > div#premier {
 
 
 div#cadre > form > div#deuxieme > input#adresse,div#cadre > form > div#quatrieme > input#autrechose {
-    width: calc(2 * 230px + 25px );
+    width: calc( 1.5 * max(14.5vw, 150px) );
 }
 
 div#cadre > form > div#sixieme {
@@ -155,10 +136,6 @@ div#cadre > form > div#sixieme {
     justify-content: space-evenly;
     margin-top: 35px;
 }
-
-
-
-
 
 div#cadre > form > div#sixieme > p {
     width:50%;

@@ -259,22 +259,3 @@ function listeArticles (Cupcakecliquer) {
     }
 
 }
-
-div#contenu-panier {
-    display: grid;
-    justify-content: space-around;
-    align-items: center;
-    justify-items: center;
-    grid-template-rows: 70px 1fr 1fr 1fr;/*80px 420px 90px 60px*/
-    position: absolute;
-    left: 0;
-    right: 0;
-    margin: 0 auto;
-    margin-top: 50vh;
-    transform: translateY(-50%);
-    width:min(850px, 90%);
-    border-radius:20px;
-    border: black solid 5px;
-    background-color: var(--white);
-    max-width: 100%;
-}

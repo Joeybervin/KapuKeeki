@@ -157,14 +157,14 @@ div#Bonus {
     margin-left: 6vw;
 
 }
-form {
+div#Bonus > form {
     display:flex;
     flex-direction: column;
     margin-top: 50px;
     font-family: 'Typo-Round-Light';
     font-size: 0.8em;
 }
-form > div {
+div#Bonus > form > div {
     margin-bottom: 5px;
 }
 form.code input, form.autre textarea {
@@ -178,7 +178,7 @@ form.autre textarea {
     height : 150px;
     width: 300px;
 }
-form img {
+div#Bonus form img {
     width : 15px;
     height:15px
 }
