@@ -228,7 +228,7 @@ div#cake > div.photo {
     width: max(6vw,60px);
     height: max(6vw,60px);
     
-    background-color: var(--lightGreen);
+    background-color: var(--darkerPink);
 }
 /* photo */
 div#cake > div.photo > img {
