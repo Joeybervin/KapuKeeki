@@ -22,6 +22,7 @@ div#pre-panier {
     border-radius:20px;
     border: black solid 5px;
     background-color: var(--white);
+    margin-top: 100px;
 }
 
 /* titre */
@@ -46,10 +47,9 @@ div#cadre > img.fermer-pre-panier {
 }
 
 /* Partie formulaire */
-
-div#cadre > form {
+/* div#cadre > form {
     align-self: start;
-}
+} */
 div#cadre > form label {
     position: absolute;
     margin-top: 25px;
@@ -104,12 +104,12 @@ div#cadre > form input {
     border: 3px solid black;
     border-radius: 40px;
     height: max(2vw, 25px);
-    width: max(14.5vw, 150px);
+    width: max(14.5vw, 200px);
     margin-top: 35px;
-    margin-right: 25px;
     background-color:white;
     text-align: center;
     font-family: 'Open Sans', sans-serif;
+    
 }
 
 
@@ -121,14 +121,17 @@ div#cadre > form {
     width: 100%;
 }
 
-div#cadre > form > div#premier {
+div#cadre > form > div#premier, div#cadre > form > div#troisieme {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    gap: 2%;
+    flex-wrap: wrap;
 }
 
 
+
 div#cadre > form > div#deuxieme > input#adresse,div#cadre > form > div#quatrieme > input#autrechose {
-    width: calc( 1.5 * max(14.5vw, 150px) );
+    width: calc( 1.8 * max(14.5vw, 150px) );
 }
 
 div#cadre > form > div#sixieme {
@@ -137,11 +140,12 @@ div#cadre > form > div#sixieme {
     margin-top: 35px;
 }
 
+/* Texte de fin */
 div#cadre > form > div#sixieme > p {
+    font-family: 'Typo-Round-bold';
     width:50%;
-    
 }
-
+/* Boutton afin d'envoyer le formulaire */
 div#cadre > form > div#sixieme > button {
     background-color: black;
     color: white;
@@ -150,4 +154,6 @@ div#cadre > form > div#sixieme > button {
     font-family: 'Typo-Round-Regular';
     border-radius:35px;
     margin-right: 25px;
+    margin-bottom: 25px;
+    cursor: pointer;
 }
