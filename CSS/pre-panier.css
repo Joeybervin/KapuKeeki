@@ -263,6 +263,7 @@ div#cake > img#circle-cancel {
     width: 17px;
     align-self: flex-start;
     margin-right: 10px;
+    cursor: pointer;
 }
 @media screen and (max-width: 750px) {
 
