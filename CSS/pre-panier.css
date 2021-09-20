@@ -207,6 +207,63 @@ div#contenu-panier > form > button#pre-payer {
     justify-self: start;
 }
 
+/* ________ PARTIE ARTICLES _______ */
+/* séparateur de produits */
+div#cake {
+    display: flex;
+    justify-content: space-between;
+    height: 100px;
+    border-bottom: black 1px solid;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-family: 'Typo-Round-Light' ;
+}
+/* PARTIE IMAGE : fond + photo */
+/* fond */
+div#cake > div.photo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    width: max(6vw,60px);
+    height: max(6vw,60px);
+    
+    background-color: var(--lightGreen);
+}
+/* photo */
+div#cake > div.photo > img {
+    width: max(4vw,40px);
+    height: max(4vw,40px);
+}
+
+/* 2eme partie : NOM ET PRIX DE L'ARTICLE */
+/* nom de l'article */
+div#cake > div#produits-nom-prix p:first-child {
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-size: max(1.2vw, 10px);
+}
+div#cake > div#produits-nom-prix p:last-child {
+    font-size: max(1vw, 10px);
+}
+
+/* 3eme partie : QUANTITÉ*/
+div#cake > input {
+    text-align: center;
+    font-family: 'Typo-Round-Light' ;
+    height : 20px;
+    width: max(3vw,30px);
+}
+/* 4eme partie : PRIX * QUANTITÉ DE UN ARTICLE */
+div#cake > p.total-d-article {
+    font-size: max(1.2vw, 13px);
+}
+/* 5eme partie : LA CROIX (supprimer) */
+div#cake > img#circle-cancel {
+    width: 17px;
+    align-self: flex-start;
+    margin-right: 10px;
+}
 @media screen and (max-width: 750px) {
 
     div#tous-articles div.articles > div.cake {
