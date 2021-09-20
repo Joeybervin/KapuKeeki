@@ -178,22 +178,28 @@
                 <p> Mes informations</p>
                 <img class="fermer-pre-panier" src="img/svg-icons/close.svg" alt="croix pour fermer la page">
 
-                <form action="" method="post" target="_self">
+                <form method="post">
                     <div id="premier">
                         <div>
-                            <label for="nom">Nom</label>
-                            <input id="nom" name="nom" max="25" type="text">
+                            <div>
+                                <label for="nom">Nom</label>
+                                <input id="nom" name="nom" max="25" type="text">
+                            </div>
+                            <div>
+                                <label for="prenom">Prénom</label>
+                                <input id="prenom" name="prenom" max="25" type="text">
+                            </div>
 
-                            <label for="prenom">Prenom</label>
-                            <input id="prenom" name="prenom" max="25" type="text">
                         </div>
-
                         <div>
-                            <label for="tel">tel</label>
-                            <input id="tel" name="tel" max-length="10" type="tel">
-
-                            <label for="mail">e-mail</label> 
-                            <input id="mail" name="mail" type="email">
+                            <div>
+                                <label for="tel">tel</label>
+                                <input id="tel" name="tel" max-length="10" type="tel">
+                            </div>
+                            <div>
+                                <label for="mail">e-mail</label> 
+                                <input id="mail" name="mail" type="email">
+                            </div>
                         </div>
                     </div>
 
@@ -204,23 +210,25 @@
 
                     <div id="troisieme">
 
-                        <label for="cp">code postale</label>
-                        <input id="cp" name="cp" type="number" max="5" min="5">
-        
-                        <label for="ville">ville</label>
-                        <input id="ville" name="ville" max="25" type="text">
-
+                        <div>
+                            <label for="cp">code postale</label>
+                            <input id="cp" name="cp" type="number" max="5" min="5">
+                        </div>
+                        <div>
+                            <label for="ville">ville</label>
+                            <input id="ville" name="ville" max="25" type="text">
+                        </div>
                     </div>
 
                     <div id="quatrieme">
-                        <label for="autrechose">informations complémentaires</label>
+                        <label for="autrechose">infos +</label>
                         <input id="autrechose" name="autrechose" max="50"type="text">
                     </div>
 
                     <div id="sixieme">
                         <p>“ Vous y êtes presques, à vous les cupcakes imaginaires ”</p>
 
-                        <button type="submit">Envoyer</button>
+                        <button  type="submit">Envoyer</button>
                     </div>
 
                 </form>
