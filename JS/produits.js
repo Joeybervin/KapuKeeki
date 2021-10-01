@@ -133,7 +133,6 @@ function listeArticles (Cupcakecliquer) {
         }
     
     }
-    
     else {
         listeDeLaCommande = [];
         listeDeLaCommande.push(Cupcakecliquer);
@@ -153,5 +152,5 @@ function NouvelleArticle(double,i,listeDeLaCommande,Cupcakecliquer) {
         Cupcakecliquer.enCommande += 1
         localStorage.setItem("cupcakesCommander" , JSON.stringify(listeDeLaCommande));
     }
-    
 }
+

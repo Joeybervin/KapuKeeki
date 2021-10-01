@@ -101,31 +101,7 @@ div#tous-articles div.articles > div.cake > div[class^="photo"] {
     height :max(5vw,35px);
     border-radius: 15px;
 }
-div#tous-articles div.articles > div.cake > div.photofy {
-    background-color: var(--yellow);
-}
-div#tous-articles div.articles > div.cake > div.photoflg {
-    background-color: var(--lightGreen);
-}
-div#tous-articles div.articles > div.cake > div.photofdg {
-    background-color: var(--darkerGreen);
-}
-div#tous-articles div.articles > div.cake > div.photoflpi {
-    background-color: var(--lightPink);
-}
-div#tous-articles div.articles > div.cake > div.photofdpi {
-    background-color: var(--darkerPink);
-}
-div#tous-articles div.articles > div.cake > div.photoflpu {
-    background-color: var(--lightPurple);
-}
-div#tous-articles div.articles > div.cake > div.photofdpu {
-    background-color: var(--darkerPurple);
-}div#tous-articles div.articles > div.cake > div.photoflb {
-    background-color: var(--lightBlue);
-}div#tous-articles div.articles > div.cake > div.photofdb {
-    background-color: var(--darkerBlue);
-}
+
 
 
 div#tous-articles div.articles > div.cake > div[class^="photo"] > img {
@@ -220,18 +196,42 @@ div#cake {
 }
 /* PARTIE IMAGE : fond + photo */
 /* fond */
-div#cake > div.photo {
+div#cake > div[class^="photo"] {
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 10px;
     width: max(6vw,60px);
     height: max(6vw,60px);
-    
+
+}
+div#tous-articles div.articles > div#cake > div.photofy {
+    background-color: var(--yellow);
+}
+div#tous-articles div.articles > div#cake > div.photoflg {
+    background-color: var(--lightGreen);
+}
+div#tous-articles div.articles > div#cake > div.photofdg {
+    background-color: var(--darkerGreen);
+}
+div#tous-articles div.articles > div#cake > div.photoflpi {
+    background-color: var(--lightPink);
+}
+div#tous-articles div.articles > div#cake > div.photofdpi {
     background-color: var(--darkerPink);
 }
+div#tous-articles div.articles > div#cake > div.photoflpu {
+    background-color: var(--lightPurple);
+}
+div#tous-articles div.articles > div#cake > div.photofdpu {
+    background-color: var(--darkerPurple);
+}div#tous-articles div.articles > div#cake > div.photoflb {
+    background-color: var(--lightBlue);
+}div#tous-articles div.articles > div#cake > div.photofdb {
+    background-color: var(--darkerBlue);
+}
 /* photo */
-div#cake > div.photo > img {
+div#cake > div[class^="photo"] > img {
     width: max(4vw,40px);
     height: max(4vw,40px);
 }

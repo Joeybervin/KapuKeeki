@@ -2,7 +2,7 @@
 /* Mes variables */
 
 
-/* Affichage des produits */
+/* Affichage des produits sur la page */
 var mycupcakes = new XMLHttpRequest()
 
 
