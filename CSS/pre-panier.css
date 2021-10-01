@@ -2,10 +2,12 @@
 html.noScroll {
     position:fixed;
 }
-
-div#contenu-panier:not(.visible) {
+/* l'option visible et invisible du pre-panier */
+div#pre-panier:not(.visible) {
     display:none;
 }
+
+/* _______________ BACKGROUND NOIR TRANSPAREND */
 div#pre-panier {
     display:flex;
     align-items: center;
@@ -16,6 +18,8 @@ div#pre-panier {
     text-align: center;
     
 }
+
+/* _________________ COUNTAINER du panier entier */
 div#contenu-panier {
     display: flex;
     flex-direction: column;
@@ -29,13 +33,10 @@ div#contenu-panier {
     border: black solid 5px;
     background-color: var(--white);
 }
-/* l'option visible et invisible du pre-panier */
-div#pre-panier:not(.visible) {
-    display:none;
-}
 
+/* _____________________ HAUT DU PANIER ____________________________ */
 
-/* titre */
+/* titre  */
 div#contenu-panier > p {
     position: relative;
     margin-top:30px ;
@@ -56,6 +57,8 @@ div#contenu-panier > img.fermer-pre-panier {
     cursor: pointer;
 }
 
+
+/* _________________ PARTIE ARTICLES _______________________ */
 /* Section contenant le total des articles dans le panier*/
 div#tous-articles {
     display: grid;
@@ -65,6 +68,7 @@ div#tous-articles {
     height: min(100px,70vh);
     box-sizing: border-box;
 }
+/* mes cupcakes (miam) */
 div#tous-articles > p {
     justify-self: start;
     align-self: end;
@@ -83,69 +87,94 @@ div#tous-articles > div.articles {
     border-bottom: 3px solid black;
     width: min(700px,75vw);
     height: max(5.7vw,280px);
-
+}
+/* séparateur de produits */
+div#cake {
+    display: flex;
+    justify-content: space-between;
+    height: 100px;
+    border-bottom: black 1px solid;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-family: 'Typo-Round-Light' ;
 }
 
-/* les articles ajoutés (photo, nom, prix etc: créer avec json + localstorage)*/
-div#tous-articles div.articles > div.cake {
-    display: inline-grid;
-    grid-template-columns: repeat(5, 1fr);
-    box-sizing: border-box;
-    padding-top: 10px;
-    
+/* _____________________ PARTIE IMAGE : fond + photo */
+/* FOND VALEUR GENERAL*/
+div#cake > div[class^="photo"] {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    width: max(6vw,60px);
+    height: max(6vw,60px);
+
 }
-/*variation des couleurs des fonds des images*/
-div#tous-articles div.articles > div.cake > div[class^="photo"] {
-    display:grid;
-    width :max(5vw,35px);
-    height :max(5vw,35px);
-    border-radius: 15px;
+/* Variation de couleur en fonction des articles */
+div#tous-articles div.articles > div#cake > div.photofy {
+    background-color: var(--yellow);
+}
+div#tous-articles div.articles > div#cake > div.photoflg {
+    background-color: var(--lightGreen);
+}
+div#tous-articles div.articles > div#cake > div.photofdg {
+    background-color: var(--darkerGreen);
+}
+div#tous-articles div.articles > div#cake > div.photoflpi {
+    background-color: var(--lightPink);
+}
+div#tous-articles div.articles > div#cake > div.photofdpi {
+    background-color: var(--darkerPink);
+}
+div#tous-articles div.articles > div#cake > div.photoflpu {
+    background-color: var(--lightPurple);
+}
+div#tous-articles div.articles > div#cake > div.photofdpu {
+    background-color: var(--darkerPurple);
+}
+div#tous-articles div.articles > div#cake > div.photoflb {
+    background-color: var(--lightBlue);
+}
+div#tous-articles div.articles > div#cake > div.photofdb {
+    background-color: var(--darkerBlue);
+}
+/* photo */
+div#cake > div[class^="photo"] > img {
+    width: max(4vw,40px);
+    height: max(4vw,40px);
 }
 
+/* _________________  2eme partie : NOM ET PRIX DE L'ARTICLE */
+/* nom de l'article */
+div#cake > div#produits-nom-prix p:first-child {
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-size: max(1.2vw, 10px);
+}
+div#cake > div#produits-nom-prix p:last-child {
+    font-size: max(1vw, 10px);
+}
 
-
-div#tous-articles div.articles > div.cake > div[class^="photo"] > img {
-    justify-self: center;
-    align-self: center;
-    width :max(3vw,20px);
-    height :max(3vw,20px);
-}
-div#tous-articles div.articles > div.cake > div.produits-nom-prix {
-    margin-left: 5%;
-}
-div#tous-articles div.articles > div.cake > div.produits-nom-prix p {
-    font-family: 'Typo-Round-Bold' ,'Open Sans', sans-serif;
-    font-weight: 300;
-    margin-top: 8%;
-    font-size: max(1.2vw,10px);
-}
-div#tous-articles div.articles > div.cake > div.produits-nom-prix p:nth-child(2){
-    font-size: max(0.8vw,7px);
-    margin-top: 5px;
-}
-div#tous-articles div.articles > div.cake > input.pre-panier-quantite {
-    justify-self: end;
-    margin-left: 10px;
-    height:max(1.5vw, 15px);
-    width: max(3.5vw, 35px);
-    border: black solid 1px;
+/* 3eme partie : QUANTITÉ*/
+div#cake > input {
     text-align: center;
-    font-family: 'Typo-Round-Bold' ,'Open Sans', sans-serif;
-    
+    font-family: 'Typo-Round-Light' ;
+    height : 20px;
+    width: max(3vw,30px);
 }
-div#tous-articles div.articles > div.cake > p.total-d-article {
-    font-family: 'Typo-Round-Bold' ,'Open Sans', sans-serif;
-    margin-left: 50px;
-    font-size: 15px;
+/* 4eme partie : PRIX * QUANTITÉ DE UN ARTICLE */
+div#cake > p.total-d-article {
+    font-size: max(1.2vw, 13px);
 }
-div#tous-articles div.articles > div.cake > img.circle-cancel {
-    justify-self: end;
-    width :15px;
-    height :15px;
+/* 5eme partie : LA CROIX (supprimer) */
+div#cake > img#circle-cancel {
+    width: 17px;
+    align-self: flex-start;
     margin-right: 10px;
+    cursor: pointer;
 }
 
-/* Section total du panier*/
+/*_______________________ Section total du panier ______________________*/
 div#contenu-panier > div#pre-panier-total {
     margin-top: 230px;
     display: grid;
@@ -181,102 +210,4 @@ div#contenu-panier > form > button#pre-payer {
     font-weight: 700;
     cursor: pointer;
     justify-self: start;
-}
-
-/* ________ PARTIE ARTICLES _______ */
-/* séparateur de produits */
-div#cake {
-    display: flex;
-    justify-content: space-between;
-    height: 100px;
-    border-bottom: black 1px solid;
-    padding-top: 15px;
-    padding-bottom: 15px;
-    font-family: 'Typo-Round-Light' ;
-}
-/* PARTIE IMAGE : fond + photo */
-/* fond */
-div#cake > div[class^="photo"] {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px;
-    width: max(6vw,60px);
-    height: max(6vw,60px);
-
-}
-div#tous-articles div.articles > div#cake > div.photofy {
-    background-color: var(--yellow);
-}
-div#tous-articles div.articles > div#cake > div.photoflg {
-    background-color: var(--lightGreen);
-}
-div#tous-articles div.articles > div#cake > div.photofdg {
-    background-color: var(--darkerGreen);
-}
-div#tous-articles div.articles > div#cake > div.photoflpi {
-    background-color: var(--lightPink);
-}
-div#tous-articles div.articles > div#cake > div.photofdpi {
-    background-color: var(--darkerPink);
-}
-div#tous-articles div.articles > div#cake > div.photoflpu {
-    background-color: var(--lightPurple);
-}
-div#tous-articles div.articles > div#cake > div.photofdpu {
-    background-color: var(--darkerPurple);
-}div#tous-articles div.articles > div#cake > div.photoflb {
-    background-color: var(--lightBlue);
-}div#tous-articles div.articles > div#cake > div.photofdb {
-    background-color: var(--darkerBlue);
-}
-/* photo */
-div#cake > div[class^="photo"] > img {
-    width: max(4vw,40px);
-    height: max(4vw,40px);
-}
-
-/* 2eme partie : NOM ET PRIX DE L'ARTICLE */
-/* nom de l'article */
-div#cake > div#produits-nom-prix p:first-child {
-    font-weight: bold;
-    margin-bottom: 10px;
-    font-size: max(1.2vw, 10px);
-}
-div#cake > div#produits-nom-prix p:last-child {
-    font-size: max(1vw, 10px);
-}
-
-/* 3eme partie : QUANTITÉ*/
-div#cake > input {
-    text-align: center;
-    font-family: 'Typo-Round-Light' ;
-    height : 20px;
-    width: max(3vw,30px);
-}
-/* 4eme partie : PRIX * QUANTITÉ DE UN ARTICLE */
-div#cake > p.total-d-article {
-    font-size: max(1.2vw, 13px);
-}
-/* 5eme partie : LA CROIX (supprimer) */
-div#cake > img#circle-cancel {
-    width: 17px;
-    align-self: flex-start;
-    margin-right: 10px;
-    cursor: pointer;
-}
-@media screen and (max-width: 750px) {
-
-    div#tous-articles div.articles > div.cake {
-        grid-template-columns: repeat(3, 1fr);
-    }
-    div#tous-articles div.articles > div.cake > div[class^="photo"] {
-        display:none;
-    }
-    div#tous-articles div.articles > div.cake > div.produits-nom-prix {
-        margin-left: 10px;
-    }
-    div#tous-articles div.articles > div.cake > p.total-d-article {
-        display:none;
-    }
 }

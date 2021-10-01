@@ -13,7 +13,7 @@ document.querySelector("div#panier").addEventListener("click", () => {
     document.querySelector("div#pre-panier").classList.toggle("visible");
     document.querySelector("div#contenu-panier").classList.toggle("visible");
     document.querySelector("html").classList.toggle("noScroll")
-    poil()
+    articleDuPanier()
 })
 
 >/* FERMER */
@@ -25,7 +25,7 @@ document.querySelector("img.fermer-pre-panier").addEventListener("click", () => 
 })
 
 /* Pour entrer ses informations de commande */
-function coco() {
+function informationClientLivraison() {
 
         document.querySelector("div#contenu-panier").classList.remove("visible");
         document.querySelector("div#pre-panier").classList.toggle("visible");
@@ -42,13 +42,13 @@ function coco() {
 
 
 
-function poil() {
+function articleDuPanier() {
 
-    var lolo = document.querySelector("div.articles")
-    var popo = JSON.parse(localStorage.getItem("cupcakesCommander"))
+    var emplacementDuPanierDansLeDOM = document.querySelector("div.articles")
+    var listeDesArticlesSeTrouvantDansLePanier = JSON.parse(localStorage.getItem("cupcakesCommander"))
     
 
-    lolo.innerHTML = ` ${popo.map(function(articleAuPanier) {
+    emplacementDuPanierDansLeDOM.innerHTML = ` ${listeDesArticlesSeTrouvantDansLePanier.map(function(articleAuPanier) {
         return `
        <div id="cake">
            <div class="${articleAuPanier.couleur}">
