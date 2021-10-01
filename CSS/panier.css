@@ -47,7 +47,7 @@ main > div#ToutLePanier::before {
 div#CoteProduits > div.produit {
     display: flex;
     justify-content: space-between;
-    height: 100px;
+    padding-bottom: 20px;
     border-bottom: black 1px solid;
     padding-top: 20px;
     font-family: 'Typo-Round-Light' ;
@@ -55,22 +55,51 @@ div#CoteProduits > div.produit {
 }
 /* 1er partie : PHOTO DU PRODUIT */
 /* FOND */
-div#CoteProduits > div.produit > div.photoProduits {
+div#CoteProduits > div.produit > div[class^="photo"] {
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 10px;
     width: max(6vw,60px);
     height: max(6vw,60px);
-    
+}
+/* Variations du fond en fonction du produit */
+div#CoteProduits > div.produit > div.photofy {
     background-color: var(--yellow);
 }
+div#CoteProduits > div.produit > div.photoflg {
+    background-color: var(--lightGreen);
+}
+div#CoteProduits > div.produit > div.photofdg {
+    background-color: var(--darkerGreen);
+}
+div#CoteProduits > div.produit > div.photoflpi {
+    background-color: var(--lightPink);
+}
+div#CoteProduits > div.produit > div.photofdpi {
+    background-color: var(--darkerPink);
+}
+div#CoteProduits > div.produit > div.photoflpu {
+    background-color: var(--lightPurple);
+}
+div#CoteProduits > div.produit > div.photofdpu {
+    background-color: var(--darkerPurple);
+}
+div#CoteProduits > div.produit > div.photoflb {
+    background-color: var(--lightBlue);
+}
+div#CoteProduits > div.produit > div.photofdb {
+    background-color: var(--darkerBlue);
+}
 /* IMAGE */
-div#CoteProduits > div.produit > div.photoProduits > img {
+div#CoteProduits > div.produit > div[class^="photo"] > img {
     width: max(4vw,40px);
     height: max(4vw,40px);
 }
 /* 2eme partie : NOM ET PRIX DE L'ARTICLE */
+div#CoteProduits > div.produit > div.produits {
+    width:15%;
+}
 /* nom de l'article */
 div#CoteProduits > div.produit > div.produits p:first-child {
     font-weight: bold;

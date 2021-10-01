@@ -6,6 +6,10 @@ html.noScroll {
 div#pre-panier:not(.visible) {
     display:none;
 }
+/* Pour empêcher le pré-panier de s'afficher en même temps */
+div#contenu-panier:not(.visible) {
+    display:none;
+}
 
 /* _______________ BACKGROUND NOIR TRANSPAREND */
 div#pre-panier {
@@ -92,7 +96,6 @@ div#tous-articles > div.articles {
 div#cake {
     display: flex;
     justify-content: space-between;
-    height: 100px;
     border-bottom: black 1px solid;
     padding-top: 15px;
     padding-bottom: 15px;
