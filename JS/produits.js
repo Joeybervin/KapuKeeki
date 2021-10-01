@@ -59,6 +59,7 @@ mycupcakes.onload = function() {
             /*Je récupère indice du boutton, pour avoir accès à l'indice du JSON correspondant */
             AjouterUnArticle(cupcake[allButtons.length -1])
             
+            
         })
 
     }
@@ -72,7 +73,13 @@ mycupcakes.send()
 /* Fonction permettant de garder le nombre d'aticle dans le panier même si nous réactualisons la page */
 function conservationDuNbrArticles() {
     let nbrArticles = localStorage.getItem("totalArticlesPanier");
-    if (nbrArticles) {
+    /* Losrque le panier est vide -> affichage à 0 */
+    if (!nbrArticles) {
+        nbrArticles = 0 ;
+        panier.innerHTML = nbrArticles
+        nbrArticlepre_panier.innerHTML = nbrArticles
+    }
+    else if (nbrArticles) {
         localStorage.setItem("totalArticlesPanier" , nbrArticles)
         panier.innerHTML = nbrArticles
         nbrArticlepre_panier.innerHTML = nbrArticles
@@ -88,45 +95,63 @@ function AjouterUnArticle(Cupcakecliquer) {
         localStorage.setItem("totalArticlesPanier" , nbrArticles += 1)
         panier.innerHTML = nbrArticles
         nbrArticlepre_panier.innerHTML = nbrArticles
+        
     }
     else {
         localStorage.setItem("totalArticlesPanier", 1)
         panier.innerHTML = 1
         nbrArticlepre_panier.innerHTML = 1
     }
-
+    
     listeArticles(Cupcakecliquer)
 }
 
 
 //Fonction qui renouvelle l'état de la commande (en implémentant dans localStorage, les articles choisis et leur quantité)
 function listeArticles (Cupcakecliquer) {
-    // Si déjà implémenté nous cherchons à récupérer le cupcake se trouvant déjà dans notre localStorage
+ 
     let listeDeLaCommande = JSON.parse(localStorage.getItem("cupcakesCommander"))
-    //Si oui
+    let double = false;
+   
     if (listeDeLaCommande) {
-        // Je regarde si un même cupcake existe déjà et si oui ajoute +1 sur sa commande
-        for (var i = 0; i < listeDeLaCommande.length ; i++) {
-            if (listeDeLaCommande[i].id === listeDeLaCommande[i].id) {
-                listeDeLaCommande[i].enCommande += 1
-            }}
-            if (listeDeLaCommande) {
-                listeDeLaCommande.push(Cupcakecliquer);
-                listeDeLaCommande[i].enCommande += 1
-                localStorage.setItem("cupcakesCommander" , JSON.stringify(listeDeLaCommande));
-                console.log(listeDeLaCommande)
+        let i = 0
+        while(i < listeDeLaCommande.length) {
+            if(Cupcakecliquer.id == listeDeLaCommande[i].id) {
+                double = true
+                return NouvelleArticle(double,i,listeDeLaCommande,Cupcakecliquer)
+              
             }
+            if (Cupcakecliquer.id !== listeDeLaCommande[i].id) {
+                if (i == listeDeLaCommande.length -1) {
+                    double = false
+                    return NouvelleArticle(double,i,listeDeLaCommande,Cupcakecliquer)
+                }
+                else {
+                    i++
+                }
+            }
+        }
+    
     }
     
-    //si non (pas de cupcakes dans le localStorage)
     else {
-        // Je créer un tableau où sera ajouter tous les cupcakes du client
         listeDeLaCommande = [];
         listeDeLaCommande.push(Cupcakecliquer);
         Cupcakecliquer.enCommande += 1
         localStorage.setItem("cupcakesCommander" , JSON.stringify(listeDeLaCommande));
-
-        console.log(listeDeLaCommande)
     }
 
+}
+
+function NouvelleArticle(double,i,listeDeLaCommande,Cupcakecliquer) {
+    if(double) {
+        listeDeLaCommande[i].enCommande += 1
+        localStorage.setItem("cupcakesCommander" , JSON.stringify(listeDeLaCommande))
+    }
+    else {
+        listeDeLaCommande.push(Cupcakecliquer);
+        Cupcakecliquer.enCommande += 1
+        localStorage.setItem("cupcakesCommander" , JSON.stringify(listeDeLaCommande));
+    }
+    
 }
