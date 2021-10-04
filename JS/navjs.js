@@ -23,13 +23,3 @@ document.querySelector("img.fermer-pre-panier").addEventListener("click", () => 
     document.querySelector("div#cadre").classList.remove("visible")
     document.querySelector("div#contenu-panier").classList.remove("visible");
 })
-
-
-
-
-
-
-
-
-
-

@@ -9,14 +9,14 @@ let nbrArticlepre_panier = document.querySelector("div#contenu-panier > p:first-
 let nbrArticles = 0
 
 
-/* _______________________ PRODUITS.HTML ___________________________ */
+/* _______________________ Accès au JSON pour affichage des produits ___________________________ */
 
-/* Affichage des produits */
 var mycupcakes = new XMLHttpRequest()
 /* Vérification de localStorage et d'articles déjà présent si page réactulisé ou bug internet */
 conservationDuNbrArticles()
-
+/* Ouverture du fichier JSON */
 mycupcakes.open("GET", "/JSON/cupcake-data.json")
+/* Chargement de la page */
 mycupcakes.onload = function() {
 
     var cupcake = JSON.parse(mycupcakes.responseText)
@@ -70,7 +70,9 @@ mycupcakes.onload = function() {
 mycupcakes.send()
 
 
-/* _____________________________ APPLICABLE SUR TOUTES LES PAGES _______________________________ */
+/* _____________________________ LES FONCTIONS _______________________________ */
+
+/* ______________ LOCALSTORAGE _________________ */
 
 /* Fonction permettant de garder le nombre d'aticle dans le panier même si nous réactualisons la page */
 function conservationDuNbrArticles() {
@@ -87,72 +89,6 @@ function conservationDuNbrArticles() {
         nbrArticlepre_panier.innerHTML = nbrArticles
     }
 }
-/* Ajoute les articles se trouvant dans localStorage dans le pre-panier (actioné dans navjs.js par le clique sur le panier) */
-function articleDuPrePanier() {
-
-    var emplacementDuPrePanierDansLeDOM = document.querySelector("div.articles")
-    var listeDesArticlesSeTrouvantDansLePrePanier = JSON.parse(localStorage.getItem("cupcakesCommander"))
-    calculSousTotal("p#prix > span")
-    
-    emplacementDuPrePanierDansLeDOM.innerHTML = ` ${listeDesArticlesSeTrouvantDansLePrePanier.map(function(articleAuPanier) {
-        
-        
-        return `
-       <div id="cake">
-           <div class="${articleAuPanier.couleur}">
-               <img src="${articleAuPanier.photoProduit}" alt="${articleAuPanier.description}">
-           </div>
-           <div id="produits-nom-prix">
-                <p>${articleAuPanier.nom}</p>
-                <p>unitée <span>${articleAuPanier.prix}</span>€</p>
-            </div>
-
-            <input class="pre-panier-quantite" type="number" step="1" max="9" min="1" value="${articleAuPanier.enCommande}">
-            <p class="total-d-article"><span>${(articleAuPanier.prix * articleAuPanier.enCommande).toFixed(2)}</span>€</p>
-            
-            <img id="circle-cancel" src="img/svg-icons/circle-cancel.svg" alt="croix pour supprimer l'article du panier">
-       </div>
-        `
-   }).join('')}
-
-   `
-   
-
-
-
-
-}
-
-function financial(x) {
-    return Number.parseFloat(x).toFixed(2);
-  }
-
-function calculSousTotal(sousTotal) {
-    var sousTotalPage = document.querySelector(sousTotal)
-    var listeDansLocalStorage = JSON.parse(localStorage.getItem("cupcakesCommander")) 
-    let accumulationTotalParArticle = 0
-
-    if(listeDansLocalStorage) {
-        listeDansLocalStorage.forEach(function(article) {
-        accumulationTotalParArticle += financial(article.prix)*parseFloat(article.enCommande)
-    })
-
-    sousTotalPage.innerHTML = accumulationTotalParArticle + " €"
-    
-    }
-    else {
-        sousTotalPage.innerHTML = 0 + " €"
-        
-    }
-
-    return accumulationTotalParArticle
-
-}
-
-
-
-
-/* ________________________ FUNCTION POUR LOCALSTORAGE __________________________________ */
 /* Fonction qui actualise le nombre d'articles ajouté au panier et dans localStorage*/
 function AjouterUnArticle(Cupcakecliquer) {
     let nbrArticles = localStorage.getItem("totalArticlesPanier");
@@ -171,7 +107,7 @@ function AjouterUnArticle(Cupcakecliquer) {
     
     listeArticles(Cupcakecliquer)
 }
-//Fonction qui renouvelle l'état de la commande (en implémentant dans localStorage, les articles choisis et leur quantité)
+/* Fonction qui gère l'ajout de nouveaux articles dans localStorage (déjà existant ou nouveau produits et implémente la liste ou la quantité) */
 function listeArticles (Cupcakecliquer) {
  
     let listeDeLaCommande = JSON.parse(localStorage.getItem("cupcakesCommander"))
@@ -218,6 +154,69 @@ function NouvelleArticle(double,i,listeDeLaCommande,Cupcakecliquer) {
         localStorage.setItem("cupcakesCommander" , JSON.stringify(listeDeLaCommande));
     }
 }
+
+
+/* _____________________ PRE-PANIER _____________________ */
+
+/* Ajoute les articles se trouvant dans localStorage dans le pre-panier (actioné dans navjs.js par le clique sur le panier) */
+function articleDuPrePanier() {
+
+    var emplacementDuPrePanierDansLeDOM = document.querySelector("div.articles")
+    var listeDesArticlesSeTrouvantDansLePrePanier = JSON.parse(localStorage.getItem("cupcakesCommander"))
+    /* Lancement du calcul et affichage du sous-total */
+    calculSousTotal("p#prix > span")
+
+    emplacementDuPrePanierDansLeDOM.innerHTML = ` ${listeDesArticlesSeTrouvantDansLePrePanier.map(function(articleAuPanier) {
+        return `
+       <div id="cake">
+           <div class="${articleAuPanier.couleur}">
+               <img src="${articleAuPanier.photoProduit}" alt="${articleAuPanier.description}">
+           </div>
+           <div id="produits-nom-prix">
+                <p>${articleAuPanier.nom}</p>
+                <p>unitée <span>${articleAuPanier.prix}</span>€</p>
+            </div>
+
+            <input class="pre-panier-quantite" type="number" step="1" max="9" min="1" value="${articleAuPanier.enCommande}">
+            <p class="total-d-article"><span>${(articleAuPanier.prix * articleAuPanier.enCommande).toFixed(2)}</span>€</p>
+            
+            <img id="circle-cancel" src="img/svg-icons/circle-cancel.svg" alt="croix pour supprimer l'article du panier">
+       </div>
+        `
+   }).join('')}
+
+   `
+}
+
+
+/* _____________ CALCUL ET AFFICHAGE DES PRIX (sous-total) */
+
+/* Pour rendre les données du JSON calculable (string => number) */
+function financial(x) {
+    return Number.parseFloat(x).toFixed(2);
+  }
+/* Calcul et affichage dans le DOM du sous-total */
+function calculSousTotal(sousTotal) {
+    var sousTotalPage = document.querySelector(sousTotal)
+    var listeDansLocalStorage = JSON.parse(localStorage.getItem("cupcakesCommander")) 
+    let accumulationTotalParArticle = 0
+
+    if(listeDansLocalStorage) {
+        listeDansLocalStorage.forEach(function(article) {
+        accumulationTotalParArticle += financial(article.prix)*parseFloat(article.enCommande)
+    })
+    sousTotalPage.innerHTML = accumulationTotalParArticle + " €"
+    }
+    else {
+        sousTotalPage.innerHTML = 0 + " €"
+    }
+    return accumulationTotalParArticle
+}
+
+
+
+
+/* ________________________ FUNCTION POUR LOCALSTORAGE __________________________________ */
 
 
 
