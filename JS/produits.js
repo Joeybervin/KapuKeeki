@@ -9,6 +9,7 @@ let nbrArticlepre_panier = document.querySelector("div#contenu-panier > p:first-
 let nbrArticles = 0
 
 
+/* _______________________ PRODUITS.HTML ___________________________ */
 
 /* Affichage des produits */
 var mycupcakes = new XMLHttpRequest()
@@ -68,6 +69,9 @@ mycupcakes.onload = function() {
 /* Nous envoyons les données à la page */
 mycupcakes.send()
 
+
+/* _____________________________ APPLICABLE SUR TOUTES LES PAGES _______________________________ */
+
 /* Fonction permettant de garder le nombre d'aticle dans le panier même si nous réactualisons la page */
 function conservationDuNbrArticles() {
     let nbrArticles = localStorage.getItem("totalArticlesPanier");
@@ -83,7 +87,72 @@ function conservationDuNbrArticles() {
         nbrArticlepre_panier.innerHTML = nbrArticles
     }
 }
+/* Ajoute les articles se trouvant dans localStorage dans le pre-panier (actioné dans navjs.js par le clique sur le panier) */
+function articleDuPrePanier() {
 
+    var emplacementDuPrePanierDansLeDOM = document.querySelector("div.articles")
+    var listeDesArticlesSeTrouvantDansLePrePanier = JSON.parse(localStorage.getItem("cupcakesCommander"))
+    calculSousTotal("p#prix > span")
+    
+    emplacementDuPrePanierDansLeDOM.innerHTML = ` ${listeDesArticlesSeTrouvantDansLePrePanier.map(function(articleAuPanier) {
+        
+        
+        return `
+       <div id="cake">
+           <div class="${articleAuPanier.couleur}">
+               <img src="${articleAuPanier.photoProduit}" alt="${articleAuPanier.description}">
+           </div>
+           <div id="produits-nom-prix">
+                <p>${articleAuPanier.nom}</p>
+                <p>unitée <span>${articleAuPanier.prix}</span>€</p>
+            </div>
+
+            <input class="pre-panier-quantite" type="number" step="1" max="9" min="1" value="${articleAuPanier.enCommande}">
+            <p class="total-d-article"><span>${(articleAuPanier.prix * articleAuPanier.enCommande).toFixed(2)}</span>€</p>
+            
+            <img id="circle-cancel" src="img/svg-icons/circle-cancel.svg" alt="croix pour supprimer l'article du panier">
+       </div>
+        `
+   }).join('')}
+
+   `
+   
+
+
+
+
+}
+
+function financial(x) {
+    return Number.parseFloat(x).toFixed(2);
+  }
+
+function calculSousTotal(sousTotal) {
+    var sousTotalPage = document.querySelector(sousTotal)
+    var listeDansLocalStorage = JSON.parse(localStorage.getItem("cupcakesCommander")) 
+    let accumulationTotalParArticle = 0
+
+    if(listeDansLocalStorage) {
+        listeDansLocalStorage.forEach(function(article) {
+        accumulationTotalParArticle += financial(article.prix)*parseFloat(article.enCommande)
+    })
+
+    sousTotalPage.innerHTML = accumulationTotalParArticle + " €"
+    
+    }
+    else {
+        sousTotalPage.innerHTML = 0 + " €"
+        
+    }
+
+    return accumulationTotalParArticle
+
+}
+
+
+
+
+/* ________________________ FUNCTION POUR LOCALSTORAGE __________________________________ */
 /* Fonction qui actualise le nombre d'articles ajouté au panier et dans localStorage*/
 function AjouterUnArticle(Cupcakecliquer) {
     let nbrArticles = localStorage.getItem("totalArticlesPanier");
@@ -102,7 +171,6 @@ function AjouterUnArticle(Cupcakecliquer) {
     
     listeArticles(Cupcakecliquer)
 }
-
 //Fonction qui renouvelle l'état de la commande (en implémentant dans localStorage, les articles choisis et leur quantité)
 function listeArticles (Cupcakecliquer) {
  
@@ -135,9 +203,9 @@ function listeArticles (Cupcakecliquer) {
         Cupcakecliquer.enCommande += 1
         localStorage.setItem("cupcakesCommander" , JSON.stringify(listeDeLaCommande));
     }
+    
 
 }
-
 /* Modification de localstorage en fonction du choix d'article (new or old) */
 function NouvelleArticle(double,i,listeDeLaCommande,Cupcakecliquer) {
     if(double) {
@@ -151,57 +219,19 @@ function NouvelleArticle(double,i,listeDeLaCommande,Cupcakecliquer) {
     }
 }
 
-function articleDuPrePanier() {
 
-    var emplacementDuPrePanierDansLeDOM = document.querySelector("div.articles")
-    var listeDesArticlesSeTrouvantDansLePrePanier = JSON.parse(localStorage.getItem("cupcakesCommander"))
-    
 
-    emplacementDuPrePanierDansLeDOM.innerHTML = ` ${listeDesArticlesSeTrouvantDansLePrePanier.map(function(articleAuPanier) {
-        return `
-       <div id="cake">
-           <div class="${articleAuPanier.couleur}">
-               <img src="${articleAuPanier.photoProduit}" alt="${articleAuPanier.description}">
-           </div>
-           <div id="produits-nom-prix">
-                <p>${articleAuPanier.nom}</p>
-                <p>unitée <span>${articleAuPanier.prix}</span>€</p>
-            </div>
 
-            <input class="pre-panier-quantite" type="number" step="1" max="9" min="1" value="${articleAuPanier.enCommande}">
-            <p class="total-d-article"><span>${articleAuPanier.prix} * ${articleAuPanier.enCommande}</span>€</p>
-            
-            <img id="circle-cancel" src="img/svg-icons/circle-cancel.svg" alt="croix pour supprimer l'article du panier">
-       </div>
-        `
-   }).join('')}
+/* document.load(function() {
+    var contenuDuPrePanier = document.querySelectorAll("img#circle-cancel")
+    var LocalstorageTaille = JSON.parse(localStorage.getItem("cupcakesCommander"))
 
-   `
-}
 
-function articleDuPanier() {
-    var emplacementDuPanierDansLeDOM = document.querySelector("div#CoteProduits")
-    var listeDesArticlesSeTrouvantDansLePanier = JSON.parse(localStorage.getItem("cupcakesCommander"))
-    
+    console.log(contenuDuPrePanier)
 
-    emplacementDuPanierDansLeDOM.innerHTML = ` ${listeDesArticlesSeTrouvantDansLePanier.map(function(articleAuPanier) {
-        return `
-       <div class="produit">
-           <div class="${articleAuPanier.couleur}">
-               <img src="${articleAuPanier.photoProduit}" alt="${articleAuPanier.description}">
-           </div>
-           <div class="produits">
-                <p>${articleAuPanier.nom}</p>
-                <p>${articleAuPanier.prix} €</p>
-            </div>
-
-            <input type="number" step="1" name="quantité" value="${articleAuPanier.enCommande}">
-            <p>${articleAuPanier.prix} €</p>
-            
-            <img src="img/svg-icons/close.svg" alt="croix pour supprimer l'article du panier">
-       </div>
-        `
-   }).join('')}
-   `
-}
-articleDuPanier()
+    for(var i=0; i < LocalstorageTaille.length ; i++) {
+        contenuDuPrePanier[i].addEventListener("click", () => {
+            console.log("bouton", i)
+        })
+    }
+}); */

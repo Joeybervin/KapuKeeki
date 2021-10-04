@@ -5,7 +5,7 @@
         "quantitty" : 20 ,
         "photoProduit" : "img/chocopinkpuff-img.png",
         "description" : "",
-        "prix" : "3,80",
+        "prix" : "3.80",
         "couleur" : "photofy",
         "enCommande" : 0},
         
@@ -15,7 +15,7 @@
         "quantitty" : 20 ,
         "photoProduit" : "img/chocopuff-img.png",
         "description" : "",
-        "prix" : "3,80",
+        "prix" : "3.80",
         "couleur" : "photoflpi",
         "enCommande" : 0},
     {
@@ -24,7 +24,7 @@
         "quantitty" : 20 ,
         "photoProduit" : "img/chocoheartpuff-img.png",
         "description" : "",
-        "prix" : "3,80",
+        "prix" : "3.80",
         "couleur" : "photofdpi",
         "enCommande" : 0},
     {
@@ -33,7 +33,7 @@
         "quantitty" : 20 ,
         "photoProduit" : "img/oreopuff-img.png",
         "description" : "",
-        "prix" : "3,80",
+        "prix" : "3.80",
         "couleur" : "photofdpu",
         "enCommande" : 0},
     {
@@ -42,7 +42,7 @@
         "quantitty" : 20 ,
         "photoProduit" : "img/pinkypuff-img.png",
         "description" : "",
-        "prix" : "3,80",
+        "prix" : "3.80",
         "couleur" : "photofdg",
         "enCommande" : 0},
     {
@@ -51,7 +51,7 @@
         "quantitty" : 20 ,
         "photoProduit" : "img/cotoncandypuff-img.png",
         "description" : "",
-        "prix" : "3,80",
+        "prix" : "3.80",
         "couleur" : "photofdpi",
         "enCommande" : 0},
     {
@@ -60,7 +60,7 @@
         "quantitty" : 20 ,
         "photoProduit" : "img/m&nspuff-img.png",
         "description" : "",
-        "prix" : "3,80",
+        "prix" : "3.80",
         "couleur" : "photoflg",
         "enCommande" : 0},
     {
@@ -69,7 +69,7 @@
         "quantitty" : 20 ,
         "photoProduit" : "img/goldenpuff-img.png",
         "description" : "",
-        "prix" : "10,90",
+        "prix" : "10.90",
         "couleur" : "photoflb",
         "enCommande" : 0},
     {
@@ -78,7 +78,7 @@
         "quantitty" : 20 ,
         "photoProduit" : "img/coffeepuff-img.png",
         "description" : "",
-        "prix" : "3,80",
+        "prix" : "3.80",
         "couleur" : "photofdb",
         "enCommande" : 0},
     {
@@ -87,7 +87,7 @@
         "quantitty" : 20 ,
         "photoProduit" : "img/chococherrypuff-img.png",
         "description" : "",
-        "prix" : "3,80",
+        "prix" : "3.80",
         "couleur" : "photofdpu",
         "enCommande" : 0},
     {
@@ -96,7 +96,7 @@
         "quantitty" : 20 ,
         "photoProduit" : "img/chocovanillapuff-img.png",
         "description" : "",
-        "prix" :"3,80",
+        "prix" :"3.80",
         "couleur" : "photoflpi",
         "enCommande" : 0},
     {
@@ -105,7 +105,7 @@
         "quantitty" : 20 ,
         "photoProduit" : "img/miampuff-img.png",
         "description" : "",
-        "prix" : "3,80",
+        "prix" : "3.80",
         "couleur" : "photofy",
         "enCommande" : 0},
     {
@@ -114,7 +114,7 @@
         "quantitty" : 20 ,
         "photoProduit" : "img/chocoeggpuff-img.png",
         "description" : "",
-        "prix" : "3,80",
+        "prix" : "3.80",
         "couleur" : "photofdpi",
         "enCommande" : 0},
     {
@@ -123,7 +123,7 @@
         "quantitty" : 20 ,
         "photoProduit" : "img/redvelcetpuff-img.png",
         "description" : "",
-        "prix" : "3,80",
+        "prix" : "3.80",
         "couleur" : "photofy",
         "enCommande" : 0},
     {
@@ -132,7 +132,7 @@
         "quantitty" : 20 ,
         "photoProduit" : "img/valentinepuff-img.png",
         "description" : "",
-        "prix" : "3,80",
+        "prix" : "3.80",
         "couleur" : "photoflpu",
         "enCommande" : 0},
     {
@@ -141,7 +141,7 @@
         "quantitty" : 20 ,
         "photoProduit" : "img/mermaidpuff-img.png",
         "description" : "",
-        "prix" : "3,80",
+        "prix" : "3.80",
         "couleur" : "photofdg",
         "enCommande" : 0}
 

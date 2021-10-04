@@ -81,7 +81,7 @@
 
                 <div id="pre-panier-total">
                     <p>Total <span>(TVA incluse)</span> </p>
-                    <p id="prix"><span>15,90 </span>€</p>
+                    <p id="prix"><span></span><span id="etoile"> *</span></p>
                 </div>
 
                 <form method="get" action="panier.html">
@@ -166,7 +166,7 @@
             <div id="CoteProduits">
                 <!-- Contenu du panier du client -->
             
-                    articleDuPanier()
+                   <p>Panier vide</p>
                 
                 
             </div>
@@ -179,13 +179,13 @@
                         <li>Frais de livraison</li>
                     </ul>
                     <ul>
-                        <li>0 €</li>
-                        <li> 4,50€</li>
+                        <li></li>
+                        <li></li>
                     </ul>
                 </div>
                 <div id="TotalFinal">
                     <p>Total <span>(TVA incluse)</span></p>
-                    <p>0 €</p>
+                    <p><span></span> €</p>
                 </div>
                 <button onclick="informationClientLivraison()" type="submit" >Commander</button>
             </div>
@@ -265,6 +265,7 @@
     <!--JS de la nav-->
     <script src="js/navjs.js"></script>
     <!--JS pour les produits-->
-    <script src="js/produits.js"></script>
+    <script src="js/fonction.js"></script>
+    <script src="js/panier.js"></script>
 </body>
 </html>

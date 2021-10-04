@@ -164,6 +164,8 @@ section#produits div.article > p {
 section#produits div.article > p:nth-child(3) {
    bottom: 45px;
    font-size: 15px;
+   font-family: 'Open Sans', sans-serif;
+   font-weight: 500;
 }
 
 
