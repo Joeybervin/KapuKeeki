@@ -123,12 +123,33 @@ function articleDuPrePanier() {
             <input class="pre-panier-quantite" type="number" step="1" max="9" min="1" value="${articleAuPanier.enCommande}">
             <p class="total-d-article"><span>${(articleAuPanier.prix * articleAuPanier.enCommande).toFixed(2)}</span>€</p>
             
-            <img id="circle-cancel" src="img/svg-icons/circle-cancel.svg" alt="croix pour supprimer l'article du panier">
+            <img  id="circle-cancel" src="img/svg-icons/circle-cancel.svg" alt="croix pour supprimer l'article du panier">
        </div>
         `
    }).join('')}
 
    `
+   indexArticleASupprimer("img#circle-cancel", listeDesArticlesSeTrouvantDansLePrePanier)
+   
+}
+
+function indexArticleASupprimer(imgDansLeDOM, liste) {
+    var imgPourSupprimer = document.querySelectorAll(imgDansLeDOM)
+
+   for (var i = 0; i < liste.length; i++) {
+    supprimerDeLocalStorage(i,imgPourSupprimer)
+   }
+}
+
+
+function supprimerDeLocalStorage(i,img) {
+
+    img[i].addEventListener("click", () => {
+            
+        console.log("voici i : ",i)
+    
+})
+    
 }
 
 
@@ -148,7 +169,8 @@ function calculSousTotal(sousTotal) {
         listeDansLocalStorage.forEach(function(article) {
         accumulationTotalParArticle += financial(article.prix)*parseFloat(article.enCommande)
     })
-    sousTotalPage.innerHTML = accumulationTotalParArticle + " €"
+
+    sousTotalPage.innerHTML = accumulationTotalParArticle.toFixed(2) + " €"
     }
     else {
         sousTotalPage.innerHTML = 0 + " €"

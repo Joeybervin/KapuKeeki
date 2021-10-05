@@ -205,7 +205,7 @@ function calculSousTotal(sousTotal) {
         listeDansLocalStorage.forEach(function(article) {
         accumulationTotalParArticle += financial(article.prix)*parseFloat(article.enCommande)
     })
-    sousTotalPage.innerHTML = accumulationTotalParArticle + " €"
+    sousTotalPage.innerHTML = accumulationTotalParArticle.toFixed(2) + " €"
     }
     else {
         sousTotalPage.innerHTML = 0 + " €"

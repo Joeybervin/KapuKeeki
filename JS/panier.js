@@ -31,11 +31,12 @@ function articleDuPanier() {
             <input type="number" step="1" name="quantité" value="${articleAuPanier.enCommande}">
             <p>${(articleAuPanier.prix * articleAuPanier.enCommande).toFixed(2)} €</p>
             
-            <img src="img/svg-icons/close.svg" alt="croix pour supprimer l'article du panier">
+            <img class="cross-cancel" src="img/svg-icons/close.svg" alt="croix pour supprimer l'article du panier">
        </div>
         `
    }).join('')}
    `
+   indexArticleASupprimer("img.cross-cancel", listeDesArticlesSeTrouvantDansLePanier)
 }
 function calculDuTotalPanier() {
     /* Dans le DOM */
