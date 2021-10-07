@@ -186,6 +186,31 @@ function articleDuPrePanier() {
    }).join('')}
 
    `
+   indexArticleASupprimer("img#circle-cancel", listeDesArticlesSeTrouvantDansLePrePanier)
+
+}
+
+function indexArticleASupprimer(imgDansLeDOM, liste) {
+    var imgPourSupprimer = document.querySelectorAll(imgDansLeDOM)
+
+   for (var i = 0; i < liste.length; i++) {
+    supprimerDeLocalStorage(i,imgPourSupprimer)
+   }
+}
+
+
+function supprimerDeLocalStorage(i,img) {
+
+    var panierclient = JSON.parse(localStorage.getItem("cupcakesCommander"))
+    var nbrArticlesClient = JSON.parse(localStorage.getItem("totalArticlesPanier"))
+
+    img[i].addEventListener("click", () => {
+            
+        panierclient.splice(i,1)
+        localStorage.setItem("cupcakesCommander" , JSON.stringify(panierclient))
+        articleDuPrePanier()
+})
+    
 }
 
 

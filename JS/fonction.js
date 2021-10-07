@@ -2,6 +2,8 @@
 let panier = document.querySelector("header div#panier > p")
 let nbrArticlepre_panier = document.querySelector("div#contenu-panier > p:first-child > span")
 
+var pagePanierHTML = false
+
 /* _______________________ Accès au JSON pour affichage des produits dans le pre-panier ___________________________ */
 
 var mycupcakes = new XMLHttpRequest()
@@ -35,8 +37,10 @@ function conservationDuNbrArticles() {
 /* Fonction qui actualise le nombre d'articles ajouté au panier et dans localStorage*/
 function AjouterUnArticle(Cupcakecliquer) {
     let nbrArticles = localStorage.getItem("totalArticlesPanier");
+    let listeDeLaCommande = JSON.parse(localStorage.getItem("cupcakesCommander"))
     nbrArticles = parseInt(nbrArticles);
     if (nbrArticles) {
+
         localStorage.setItem("totalArticlesPanier" , nbrArticles += 1)
         panier.innerHTML = nbrArticles
         nbrArticlepre_panier.innerHTML = nbrArticles
@@ -56,7 +60,9 @@ function listeArticles (Cupcakecliquer) {
     let listeDeLaCommande = JSON.parse(localStorage.getItem("cupcakesCommander"))
     let double = false;
    
+
     if (listeDeLaCommande) {
+        
         let i = 0
         while(i < listeDeLaCommande.length) {
             if(Cupcakecliquer.id == listeDeLaCommande[i].id) {
@@ -129,25 +135,35 @@ function articleDuPrePanier() {
    }).join('')}
 
    `
-   indexArticleASupprimer("img#circle-cancel", listeDesArticlesSeTrouvantDansLePrePanier)
+   indexArticleASupprimer("img#circle-cancel", listeDesArticlesSeTrouvantDansLePrePanier,pagePanierHTML)
    
 }
 
-function indexArticleASupprimer(imgDansLeDOM, liste) {
+function indexArticleASupprimer(imgDansLeDOM, liste,pagePanierHTML) {
     var imgPourSupprimer = document.querySelectorAll(imgDansLeDOM)
 
    for (var i = 0; i < liste.length; i++) {
-    supprimerDeLocalStorage(i,imgPourSupprimer)
+    supprimerDeLocalStorage(i,imgPourSupprimer,pagePanierHTML)
    }
 }
 
 
-function supprimerDeLocalStorage(i,img) {
+function supprimerDeLocalStorage(i,img,page) {
+
+    var panierclient = JSON.parse(localStorage.getItem("cupcakesCommander"))
+    var nbrArticlesClient = JSON.parse(localStorage.getItem("totalArticlesPanier"))
+
 
     img[i].addEventListener("click", () => {
-            
-        console.log("voici i : ",i)
-    
+        panierclient[i].enCommande = 0
+        localStorage.setItem("totalArticlesPanier" , nbrArticles - panierclient[i].enCommande)
+        panierclient.splice(i,1)
+        localStorage.setItem("cupcakesCommander" , JSON.stringify(panierclient))
+        articleDuPrePanier()
+
+        if (page == true) {
+            articleDuPanier()
+        }
 })
     
 }
@@ -178,24 +194,3 @@ function calculSousTotal(sousTotal) {
     return accumulationTotalParArticle
 }
 
-
-
-
-/* ________________________ FUNCTION POUR LOCALSTORAGE __________________________________ */
-
-
-
-
-/* document.load(function() {
-    var contenuDuPrePanier = document.querySelectorAll("img#circle-cancel")
-    var LocalstorageTaille = JSON.parse(localStorage.getItem("cupcakesCommander"))
-
-
-    console.log(contenuDuPrePanier)
-
-    for(var i=0; i < LocalstorageTaille.length ; i++) {
-        contenuDuPrePanier[i].addEventListener("click", () => {
-            console.log("bouton", i)
-        })
-    }
-}); */

@@ -1,3 +1,6 @@
+var pagePanierHTML = true
+
+
 /* Ajoute les articles se trouvant dans localStorage dans la panier final */
 articleDuPanier()
 /* Affichage dans le DOM et calcul du sous-panier du panier */
@@ -15,7 +18,8 @@ calculDuTotalPanier()
 function articleDuPanier() {
     var emplacementDuPanierDansLeDOM = document.querySelector("div#CoteProduits")
     var listeDesArticlesSeTrouvantDansLePanier = JSON.parse(localStorage.getItem("cupcakesCommander"))
-    
+    calculSousTotal("div#Total ul:last-child li:first-child")
+    calculDuTotalPanier()
 
     emplacementDuPanierDansLeDOM.innerHTML = ` ${listeDesArticlesSeTrouvantDansLePanier.map(function(articleAuPanier) {
         return `
@@ -36,8 +40,12 @@ function articleDuPanier() {
         `
    }).join('')}
    `
-   indexArticleASupprimer("img.cross-cancel", listeDesArticlesSeTrouvantDansLePanier)
+   indexArticleASupprimer("img.cross-cancel", listeDesArticlesSeTrouvantDansLePanier,pagePanierHTML)
+
+   
 }
+
+
 function calculDuTotalPanier() {
     /* Dans le DOM */
     var fraisDeLivraisonDOM = document.querySelector("div#Total ul:last-child li:last-child")
