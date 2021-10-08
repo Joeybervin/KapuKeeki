@@ -57,14 +57,10 @@ mycupcakes.onload = function() {
         
         /* Je créer un event sur le clique des bouttons */
         allButtons[i].addEventListener('click',() => {
-            /*Je récupère indice du boutton, pour avoir accès à l'indice du JSON correspondant */
+            /*J'envoie les infos de l'article sur lequel je viens de cliquer */
             AjouterUnArticle(cupcake[allButtons.length -1])
-            
-            
         })
-
     }
-
 }
 /* Nous envoyons les données à la page */
 mycupcakes.send()
@@ -89,6 +85,7 @@ function conservationDuNbrArticles() {
         nbrArticlepre_panier.innerHTML = nbrArticles
     }
 }
+
 /* Fonction qui actualise le nombre d'articles ajouté au panier et dans localStorage*/
 function AjouterUnArticle(Cupcakecliquer) {
     let nbrArticles = localStorage.getItem("totalArticlesPanier");
@@ -107,6 +104,7 @@ function AjouterUnArticle(Cupcakecliquer) {
     
     listeArticles(Cupcakecliquer)
 }
+
 /* Fonction qui gère l'ajout de nouveaux articles dans localStorage (déjà existant ou nouveau produits et implémente la liste ou la quantité) */
 function listeArticles (Cupcakecliquer) {
  
@@ -114,6 +112,7 @@ function listeArticles (Cupcakecliquer) {
     let double = false;
    
     if (listeDeLaCommande) {
+
         let i = 0
         while(i < listeDeLaCommande.length) {
             if(Cupcakecliquer.id == listeDeLaCommande[i].id) {
@@ -205,7 +204,12 @@ function supprimerDeLocalStorage(i,img) {
     var nbrArticlesClient = JSON.parse(localStorage.getItem("totalArticlesPanier"))
 
     img[i].addEventListener("click", () => {
-            
+        var nbrAticlesRetirer = panierclient[i].enCommande
+        nouveaunbrArticlesClient = localStorage.setItem("totalArticlesPanier" , nbrArticlesClient - nbrAticlesRetirer)
+        var DOMnouveaunbrArticlesClient = JSON.parse(localStorage.getItem("totalArticlesPanier"))
+        console.log("le nouveau : ", DOMnouveaunbrArticlesClient)
+        panier.innerHTML = DOMnouveaunbrArticlesClient
+        nbrArticlepre_panier.innerHTML = DOMnouveaunbrArticlesClient
         panierclient.splice(i,1)
         localStorage.setItem("cupcakesCommander" , JSON.stringify(panierclient))
         articleDuPrePanier()
@@ -240,22 +244,3 @@ function calculSousTotal(sousTotal) {
 
 
 
-
-/* ________________________ FUNCTION POUR LOCALSTORAGE __________________________________ */
-
-
-
-
-/* document.load(function() {
-    var contenuDuPrePanier = document.querySelectorAll("img#circle-cancel")
-    var LocalstorageTaille = JSON.parse(localStorage.getItem("cupcakesCommander"))
-
-
-    console.log(contenuDuPrePanier)
-
-    for(var i=0; i < LocalstorageTaille.length ; i++) {
-        contenuDuPrePanier[i].addEventListener("click", () => {
-            console.log("bouton", i)
-        })
-    }
-}); */

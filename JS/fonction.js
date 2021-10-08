@@ -148,22 +148,21 @@ function indexArticleASupprimer(imgDansLeDOM, liste,pagePanierHTML) {
 }
 
 
-function supprimerDeLocalStorage(i,img,page) {
+function supprimerDeLocalStorage(i,img) {
 
     var panierclient = JSON.parse(localStorage.getItem("cupcakesCommander"))
     var nbrArticlesClient = JSON.parse(localStorage.getItem("totalArticlesPanier"))
 
-
     img[i].addEventListener("click", () => {
-        panierclient[i].enCommande = 0
-        localStorage.setItem("totalArticlesPanier" , nbrArticles - panierclient[i].enCommande)
+        var nbrAticlesRetirer = panierclient[i].enCommande
+        nouveaunbrArticlesClient = localStorage.setItem("totalArticlesPanier" , nbrArticlesClient - nbrAticlesRetirer)
+        var DOMnouveaunbrArticlesClient = JSON.parse(localStorage.getItem("totalArticlesPanier"))
+        console.log("le nouveau : ", DOMnouveaunbrArticlesClient)
+        panier.innerHTML = DOMnouveaunbrArticlesClient
+        nbrArticlepre_panier.innerHTML = DOMnouveaunbrArticlesClient
         panierclient.splice(i,1)
         localStorage.setItem("cupcakesCommander" , JSON.stringify(panierclient))
         articleDuPrePanier()
-
-        if (page == true) {
-            articleDuPanier()
-        }
 })
     
 }
