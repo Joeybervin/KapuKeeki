@@ -111,6 +111,10 @@ function listeArticles (Cupcakecliquer) {
     let listeDeLaCommande = JSON.parse(localStorage.getItem("cupcakesCommander"))
     let double = false;
    
+    if (listeDeLaCommande && listeDeLaCommande.length == 0) {
+        listeDeLaCommande.push(Cupcakecliquer);
+        localStorage.setItem("cupcakesCommander" , JSON.stringify(listeDeLaCommande));
+    } 
     if (listeDeLaCommande) {
 
         let i = 0
@@ -118,8 +122,8 @@ function listeArticles (Cupcakecliquer) {
             if(Cupcakecliquer.id == listeDeLaCommande[i].id) {
                 double = true
                 return NouvelleArticle(double,i,listeDeLaCommande,Cupcakecliquer)
-              
             }
+
             if (Cupcakecliquer.id !== listeDeLaCommande[i].id) {
                 if (i == listeDeLaCommande.length -1) {
                     double = false
@@ -138,18 +142,17 @@ function listeArticles (Cupcakecliquer) {
         Cupcakecliquer.enCommande += 1
         localStorage.setItem("cupcakesCommander" , JSON.stringify(listeDeLaCommande));
     }
-    
-
 }
 /* Modification de localstorage en fonction du choix d'article (new or old) */
 function NouvelleArticle(double,i,listeDeLaCommande,Cupcakecliquer) {
     if(double) {
+        Cupcakecliquer.enCommande = 0
         listeDeLaCommande[i].enCommande += 1
         localStorage.setItem("cupcakesCommander" , JSON.stringify(listeDeLaCommande))
     }
     else {
         listeDeLaCommande.push(Cupcakecliquer);
-        Cupcakecliquer.enCommande += 1
+        Cupcakecliquer.enCommande = 1
         localStorage.setItem("cupcakesCommander" , JSON.stringify(listeDeLaCommande));
     }
 }
@@ -188,7 +191,7 @@ function articleDuPrePanier() {
    indexArticleASupprimer("img#circle-cancel", listeDesArticlesSeTrouvantDansLePrePanier)
 
 }
-
+/* Renvoie l'index du produits à supprimer du panier */
 function indexArticleASupprimer(imgDansLeDOM, liste) {
     var imgPourSupprimer = document.querySelectorAll(imgDansLeDOM)
 
@@ -196,8 +199,7 @@ function indexArticleASupprimer(imgDansLeDOM, liste) {
     supprimerDeLocalStorage(i,imgPourSupprimer)
    }
 }
-
-
+/* Actualise le nombre d'aticle dans le panier sur LocalStorage et dans le DOM */
 function supprimerDeLocalStorage(i,img) {
 
     var panierclient = JSON.parse(localStorage.getItem("cupcakesCommander"))
@@ -205,16 +207,31 @@ function supprimerDeLocalStorage(i,img) {
 
     img[i].addEventListener("click", () => {
         var nbrAticlesRetirer = panierclient[i].enCommande
+        /* Je soustrait la quantité de l'article selectionner au total d'aqrticle se trouvant dans le panier */
         nouveaunbrArticlesClient = localStorage.setItem("totalArticlesPanier" , nbrArticlesClient - nbrAticlesRetirer)
+        /* Je récupère ce chiffre */
         var DOMnouveaunbrArticlesClient = JSON.parse(localStorage.getItem("totalArticlesPanier"))
-        console.log("le nouveau : ", DOMnouveaunbrArticlesClient)
+        /* Puis je l'actualise dans mon DOM */
         panier.innerHTML = DOMnouveaunbrArticlesClient
         nbrArticlepre_panier.innerHTML = DOMnouveaunbrArticlesClient
+
+        
+
+        console.log("1 : ",nbrAticlesRetirer)
+        nbrAticlesRetirer = 0
+        localStorage.setItem("cupcakesCommander" , nbrAticlesRetirer)
+        console.log("2 : ",nbrAticlesRetirer)
+
+
+
+
+        /* Je supprime l'article sélectionner de mon localStorage */
         panierclient.splice(i,1)
+        /* Puis j'actualise cette nouvelle liste */
         localStorage.setItem("cupcakesCommander" , JSON.stringify(panierclient))
         articleDuPrePanier()
-})
-    
+
+    })
 }
 
 

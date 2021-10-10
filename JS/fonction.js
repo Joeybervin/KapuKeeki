@@ -60,16 +60,19 @@ function listeArticles (Cupcakecliquer) {
     let listeDeLaCommande = JSON.parse(localStorage.getItem("cupcakesCommander"))
     let double = false;
    
-
+    if (listeDeLaCommande && listeDeLaCommande.length == 0) {
+        listeDeLaCommande.push(Cupcakecliquer);
+        localStorage.setItem("cupcakesCommander" , JSON.stringify(listeDeLaCommande));
+    } 
     if (listeDeLaCommande) {
-        
+
         let i = 0
         while(i < listeDeLaCommande.length) {
             if(Cupcakecliquer.id == listeDeLaCommande[i].id) {
                 double = true
                 return NouvelleArticle(double,i,listeDeLaCommande,Cupcakecliquer)
-              
             }
+
             if (Cupcakecliquer.id !== listeDeLaCommande[i].id) {
                 if (i == listeDeLaCommande.length -1) {
                     double = false
@@ -88,8 +91,6 @@ function listeArticles (Cupcakecliquer) {
         Cupcakecliquer.enCommande += 1
         localStorage.setItem("cupcakesCommander" , JSON.stringify(listeDeLaCommande));
     }
-    
-
 }
 /* Modification de localstorage en fonction du choix d'article (new or old) */
 function NouvelleArticle(double,i,listeDeLaCommande,Cupcakecliquer) {
@@ -155,16 +156,19 @@ function supprimerDeLocalStorage(i,img) {
 
     img[i].addEventListener("click", () => {
         var nbrAticlesRetirer = panierclient[i].enCommande
+        
         nouveaunbrArticlesClient = localStorage.setItem("totalArticlesPanier" , nbrArticlesClient - nbrAticlesRetirer)
+        /* voir si amélioration */
         var DOMnouveaunbrArticlesClient = JSON.parse(localStorage.getItem("totalArticlesPanier"))
-        console.log("le nouveau : ", DOMnouveaunbrArticlesClient)
         panier.innerHTML = DOMnouveaunbrArticlesClient
-        nbrArticlepre_panier.innerHTML = DOMnouveaunbrArticlesClient
+         nbrArticlepre_panier.innerHTML = DOMnouveaunbrArticlesClient
+        /*nbrAticlesRetirer = -1 */
+        console.log("LE NOMBRE D'ARTICLES EST : ", nbrAticlesRetirer)
         panierclient.splice(i,1)
         localStorage.setItem("cupcakesCommander" , JSON.stringify(panierclient))
         articleDuPrePanier()
-})
-    
+
+    })
 }
 
 
