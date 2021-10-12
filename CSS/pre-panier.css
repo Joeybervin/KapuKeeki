@@ -164,15 +164,40 @@ div#cake > div#produits-nom-prix p:last-child {
 }
 
 /* 3eme partie : QUANTITÉ*/
-div#cake > input {
+div#cake > div.quantite {
+    display:flex;
+    border: 0.5px solid black;
+    height : 24px;
+}
+div#cake > div.quantite > div{
+    display:flex;
+    align-items: center;
+    font-size: max(1.2vw, 12px);
+    font-weight: bold;
+    cursor: pointer;
+}
+div#cake > div.quantite > div:first-child {
+    padding-left: 5px;
+}
+div#cake > div.quantite > div:last-child {
+    padding-right: 5px;
+}
+div#cake > div.quantite > p {
     text-align: center;
     font-family: 'Typo-Round-Light' ;
-    height : 20px;
     width: max(3vw,30px);
+    vertical-align: middle;
+    /* Pour enlever l'action des flèche 
+    -moz-appearance:textfield;
+    border : none*/
 }
+/* div#cake > div.quantite > input::-webkit-outer-spin-button, div#cake > div.quantite >
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+} */
 /* 4eme partie : PRIX * QUANTITÉ DE UN ARTICLE */
 div#cake > p.total-d-article {
-    font-size: max(1.2vw, 13px);
+    font-size: max(1.2vw, 11px);
     font-family: 'Open Sans', sans-serif;
     font-weight: 500;
 }

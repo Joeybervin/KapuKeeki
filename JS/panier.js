@@ -1,5 +1,3 @@
-var pagePanierHTML = true
-
 
 /* Ajoute les articles se trouvant dans localStorage dans la panier final */
 articleDuPanier()
@@ -9,11 +7,17 @@ calculSousTotal("div#Total ul:last-child li:first-child")
 calculDuTotalPanier()
 
 
+/* _______________________ Accès au JSON pour affichage des produits dans le pre-panier ___________________________ */
 
+var mycupcakes = new XMLHttpRequest()
+/* Vérification de localStorage et d'articles déjà présent si page réactulisé ou bug internet */
+conservationDuNbrArticles()
+/* Ouverture du fichier JSON */
+mycupcakes.open("GET", "/JSON/cupcake-data.json")
+/* Envoie des données à la page */
+mycupcakes.send()
 
-
-
-/* ___________________________ LES FUNCTIONS  ___________________________*/
+/* ___________________________ PANIER.HTML  ___________________________*/
 
 function articleDuPanier() {
     var emplacementDuPanierDansLeDOM = document.querySelector("div#CoteProduits")
@@ -40,12 +44,74 @@ function articleDuPanier() {
         `
    }).join('')}
    `
-   indexArticleASupprimer("img.cross-cancel", listeDesArticlesSeTrouvantDansLePanier,pagePanierHTML)
+   indexArticleASupprimer("img.cross-cancel", listeDesArticlesSeTrouvantDansLePanier,articleDuPanier)
 
    
 }
 
+/* Renvoie l'index du produits à supprimer du panier */
+function indexArticleASupprimer(imgDansLeDOM, liste,page) {
+    var imgPourSupprimer = document.querySelectorAll(imgDansLeDOM)
 
+   for (var i = 0; i < liste.length; i++) {
+    supprimerDeLocalStorage(i,imgPourSupprimer,page)
+   }
+}
+/* Actualise le nombre d'aticle dans le panier sur LocalStorage et dans le DOM */
+function supprimerDeLocalStorage(i,img,page) {
+
+    var panierclient = JSON.parse(localStorage.getItem("cupcakesCommander"))
+    var nbrArticlesClient = JSON.parse(localStorage.getItem("totalArticlesPanier"))
+
+    img[i].addEventListener("click", () => {
+        var nbrAticlesRetirer = panierclient[i].enCommande
+        /* Je soustrait la quantité de l'article selectionner au total d'aqrticle se trouvant dans le panier */
+        nouveaunbrArticlesClient = localStorage.setItem("totalArticlesPanier" , nbrArticlesClient - nbrAticlesRetirer)
+        /* Je récupère ce chiffre */
+        var DOMnouveaunbrArticlesClient = JSON.parse(localStorage.getItem("totalArticlesPanier"))
+        /* Puis je l'actualise dans mon DOM */
+        panier.innerHTML = DOMnouveaunbrArticlesClient
+        nbrArticlepre_panier.innerHTML = DOMnouveaunbrArticlesClient
+
+        nbrAticlesRetirer = 0
+        localStorage.setItem("cupcakesCommander" , nbrAticlesRetirer)
+
+        /* Je supprime l'article sélectionner de mon localStorage */
+        panierclient.splice(i,1)
+        /* Puis j'actualise cette nouvelle liste */
+        localStorage.setItem("cupcakesCommander" , JSON.stringify(panierclient))
+        page()
+        
+
+    })
+}
+
+
+/* _____________ CALCUL ET AFFICHAGE DES PRIX (sous-total) */
+
+/* Pour rendre les données du JSON calculable (string => number) */
+function financial(x) {
+    return Number.parseFloat(x).toFixed(2);
+  }
+/* Calcul et affichage dans le DOM du sous-total */
+function calculSousTotal(sousTotal) {
+    var sousTotalPage = document.querySelector(sousTotal)
+    var listeDansLocalStorage = JSON.parse(localStorage.getItem("cupcakesCommander")) 
+    let accumulationTotalParArticle = 0
+
+    if(listeDansLocalStorage) {
+        listeDansLocalStorage.forEach(function(article) {
+        accumulationTotalParArticle += financial(article.prix)*parseFloat(article.enCommande)
+    })
+    sousTotalPage.innerHTML = accumulationTotalParArticle.toFixed(2) + " €"
+    }
+    else {
+        sousTotalPage.innerHTML = 0 + " €"
+    }
+    return accumulationTotalParArticle
+}
+
+/* Calcul du total de la commande */
 function calculDuTotalPanier() {
     /* Dans le DOM */
     var fraisDeLivraisonDOM = document.querySelector("div#Total ul:last-child li:last-child")
