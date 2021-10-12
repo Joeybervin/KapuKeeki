@@ -71,7 +71,7 @@ function articleDuPrePanier() {
 
    `
    indexArticleASupprimer("img#circle-cancel", listeDesArticlesSeTrouvantDansLePrePanier,articleDuPrePanier)
-   controleDeLaQuantite("div#cake < div.quantite < div.moins","div#cake < div.quantite < div.plus",listeDesArticlesSeTrouvantDansLePrePanier)
+   controleDeLaQuantite("div#cake div.moins","div#cake div.plus",listeDesArticlesSeTrouvantDansLePrePanier,articleDuPrePanier)
 
 }
 /* Renvoie l'index du produits à supprimer du panier */
@@ -138,7 +138,7 @@ function calculSousTotal(sousTotal) {
 }
 
 /* Pour intercepter le produit sur lequel nous avons cliqué */
-function controleDeLaQuantite(DOMBoutonsMoins,DOMBoutonsPlus,liste) {
+function controleDeLaQuantite(DOMBoutonsMoins,DOMBoutonsPlus,liste,page) {
 
     var bouttonMoins = document.querySelectorAll(DOMBoutonsMoins)
     var bouttonPlus = document.querySelectorAll(DOMBoutonsPlus)
@@ -147,10 +147,10 @@ function controleDeLaQuantite(DOMBoutonsMoins,DOMBoutonsPlus,liste) {
     for(var i = 0; i < liste.length; i++) {
 
         if (moinsUnArticle) {
-            moinsUnArticle(i,bouttonMoins)
+            moinsUnArticle(i,bouttonMoins,page)
         }
         if (plusUnArticle) {
-            plusUnArticle(i,bouttonPlus)
+            plusUnArticle(i,bouttonPlus,page)
         }
 
         
@@ -158,7 +158,7 @@ function controleDeLaQuantite(DOMBoutonsMoins,DOMBoutonsPlus,liste) {
 } 
 
 /* Pour enlever un produit */
-function moinsUnArticle(i,DOMClickMoins) {
+function moinsUnArticle(i,DOMClickMoins,page) {
     var panierclient = JSON.parse(localStorage.getItem("cupcakesCommander"))
     var nbrArticlesClient = JSON.parse(localStorage.getItem("totalArticlesPanier"))
     
@@ -174,14 +174,14 @@ function moinsUnArticle(i,DOMClickMoins) {
         
         panierclient[i].enCommande -= 1
         localStorage.setItem("cupcakesCommander" , JSON.stringify(panierclient));
-        articleDuPrePanier()
+        page()
 
         if (panierclient[i].enCommande == 0) {
             /* Je supprime l'article sélectionner de mon localStorage */
             panierclient.splice(i,1)
             /* Puis j'actualise cette nouvelle liste */
             localStorage.setItem("cupcakesCommander" , JSON.stringify(panierclient))
-            articleDuPrePanier()
+            page()
         }
 
         
@@ -191,7 +191,7 @@ function moinsUnArticle(i,DOMClickMoins) {
 
 /* Pour ajouter un produit */
 
-function plusUnArticle(i,DOMClickPlus) {
+function plusUnArticle(i,DOMClickPlus,page) {
 
     var panierclient = JSON.parse(localStorage.getItem("cupcakesCommander"))
     var nbrArticlesClient = JSON.parse(localStorage.getItem("totalArticlesPanier"))
@@ -207,7 +207,7 @@ function plusUnArticle(i,DOMClickPlus) {
         
         panierclient[i].enCommande += 1
         localStorage.setItem("cupcakesCommander" , JSON.stringify(panierclient));
-        articleDuPrePanier()
+        page()
 
         
     })

@@ -50,6 +50,8 @@ function articleDuPanier() {
    }).join('')}
    `
    indexArticleASupprimer("img.cross-cancel", listeDesArticlesSeTrouvantDansLePanier,articleDuPanier)
+   controleDeLaQuantite("div.produit div.moins","div.produit div.plus",listeDesArticlesSeTrouvantDansLePanier,articleDuPanier)
+
 
    
 }
