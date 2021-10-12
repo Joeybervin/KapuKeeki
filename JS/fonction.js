@@ -57,9 +57,9 @@ function articleDuPrePanier() {
             </div>
 
             <div class="quantite">
-                <div>-</div>
+                <div class="moins">-</div>
                 <p>${articleAuPanier.enCommande}</p>
-                <div>+</div>
+                <div class="plus">+</div>
             </div>
 
             <p class="total-d-article"><span>${(articleAuPanier.prix * articleAuPanier.enCommande).toFixed(2)}</span>€</p>
@@ -71,6 +71,7 @@ function articleDuPrePanier() {
 
    `
    indexArticleASupprimer("img#circle-cancel", listeDesArticlesSeTrouvantDansLePrePanier,articleDuPrePanier)
+   controleDeLaQuantite("div.moins","div.plus",listeDesArticlesSeTrouvantDansLePrePanier)
 
 }
 /* Renvoie l'index du produits à supprimer du panier */
@@ -90,7 +91,7 @@ function supprimerDeLocalStorage(i,img,page) {
     img[i].addEventListener("click", () => {
         var nbrAticlesRetirer = panierclient[i].enCommande
         /* Je soustrait la quantité de l'article selectionner au total d'aqrticle se trouvant dans le panier */
-        nouveaunbrArticlesClient = localStorage.setItem("totalArticlesPanier" , nbrArticlesClient - nbrAticlesRetirer)
+        nouveauNbrArticlesClient = localStorage.setItem("totalArticlesPanier" , nbrArticlesClient - nbrAticlesRetirer)
         /* Je récupère ce chiffre */
         var DOMnouveaunbrArticlesClient = JSON.parse(localStorage.getItem("totalArticlesPanier"))
         /* Puis je l'actualise dans mon DOM */
@@ -136,3 +137,54 @@ function calculSousTotal(sousTotal) {
     return accumulationTotalParArticle
 }
 
+
+function controleDeLaQuantite(DOMBoutonsMoins,DOMBoutonsPlus,liste) {
+
+    var bouttonMoins = document.querySelectorAll(DOMBoutonsMoins)
+    var bouttonPlus = document.querySelectorAll(DOMBoutonsPlus)
+
+    /* Pour enlever des produits */
+    for(var i = 0; i < liste.length; i++) {
+
+        if (moinsUnArticle) {
+            moinsUnArticle(i,bouttonMoins)
+        }
+        if (plusUnArticle) {
+            plusUnArticle(i,bouttonPlus)
+        }
+
+        
+    }
+} 
+
+function moinsUnArticle(i,DOMClickMoins) {
+    var DOMQuantite = document.querySelectorAll("div.quantite > p")
+    var panierclient = JSON.parse(localStorage.getItem("cupcakesCommander"))
+    var nbrArticlesClient = JSON.parse(localStorage.getItem("totalArticlesPanier"))
+    var nbrAticlesRetirer = panierclient[i].enCommande
+    
+    DOMClickMoins[i].addEventListener("click", () => {
+        
+        nouveaunbrArticlesClient = localStorage.setItem("totalArticlesPanier" , nbrArticlesClient - 1)
+        var DOMnouveaunbrArticlesClient = JSON.parse(localStorage.getItem("totalArticlesPanier"))
+        /* Puis je l'actualise dans mon DOM */
+        panier.innerHTML = DOMnouveaunbrArticlesClient
+        nbrArticlepre_panier.innerHTML = DOMnouveaunbrArticlesClient
+
+        nbrAticlesRetirer -= 1
+        localStorage.setItem("cupcakesCommander" , JSON.stringify(panierclient))
+        DOMQuantite[i].innerHTML = nbrAticlesRetirer
+        
+
+        
+    })
+
+}
+
+
+function plusUnArticle(i,DOMClickPlus) {
+
+    DOMClickPlus[i].addEventListener("click", () => {
+        console.log("plus" +i)
+    })
+}

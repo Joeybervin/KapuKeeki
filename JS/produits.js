@@ -100,7 +100,7 @@ function AjouterUnArticle(Cupcakecliquer,keyLocalStorageNbrArticles,keyLocalStor
         nbrArticlepre_panier.innerHTML = 1
     }
     
-    listeArticles(Cupcakecliquer,keyLocalStorageListeDArticles)
+    listeArticles(Cupcakecliquer,"cupcakesCommander")
 }
 /* Fonction qui gère l'ajout de nouveaux articles dans localStorage (déjà existant ou nouveau produits et implémente la liste ou la quantité) */
 function listeArticles (Cupcakecliquer,keyLocalStorageListeDArticles) {
@@ -140,7 +140,7 @@ function listeArticles (Cupcakecliquer,keyLocalStorageListeDArticles) {
         listeDeLaCommande = [];
         listeDeLaCommande.push(Cupcakecliquer);
         Cupcakecliquer.enCommande += 1
-        localStorage.setItem(keyLocalStorage , JSON.stringify(listeDeLaCommande));
+        localStorage.setItem(keyLocalStorageListeDArticles , JSON.stringify(listeDeLaCommande));
     }
 }
 /* Modification de localstorage en fonction du choix d'article (new or old) */
