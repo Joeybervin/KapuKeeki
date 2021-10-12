@@ -75,6 +75,7 @@
                     <p>mes cupcakes (miam)</p>
                     <div class="articles">
                         <!--TOUS LES CUPCAKES DU PANIER ICI-->
+                        <p class="vide">panier vide</p>
                     </div>
 
                 </div>
@@ -96,7 +97,7 @@
                 <p> Mes informations</p>
                 <img class="fermer-pre-panier" src="img/svg-icons/close.svg" alt="croix pour fermer la page">
 
-                <form method="post">
+                <form action="home.html" method="post">
                     <div id="premier">
                         <div>
                             <div>
@@ -166,7 +167,7 @@
             <div id="CoteProduits">
                 <!-- Contenu du panier du client -->
             
-                   <p>Panier vide</p>
+                   <p class="vide">Panier vide</p>
                 
                 
             </div>
@@ -194,14 +195,14 @@
 
         <div id="Bonus">
             <!-- Pour entrer un code de réduction  -->
-        <form class="code" method="POST">
+        <form action="panier.html" class="code" method="get">
             <div>
                 <img src="img/svg-icons/etiquette.svg" alt="">
                 <label for="code">code promo</label>
             </div>
             <div class="validationCode">
                 <input id="code" type="text" name="code" id="code">
-                <button>OK</button>
+                <button type="submit">OK</button>
             </div>
         </form>
 

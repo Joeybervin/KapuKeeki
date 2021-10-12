@@ -101,6 +101,17 @@ div#cake {
     padding-bottom: 15px;
     font-family: 'Typo-Round-Light' ;
 }
+/* indication que le panier est vide */
+p.vide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-family: 'Typo-Round-Light';
+    color:rgb(161, 158, 158);
+    filter: blur(0.5px);
+
+}
 
 /* _____________________ PARTIE IMAGE : fond + photo */
 /* FOND VALEUR GENERAL*/
@@ -175,12 +186,14 @@ div#cake > div.quantite > div{
     font-size: max(1.2vw, 20px);
     cursor: pointer;
 }
-div#cake > div.quantite > div:first-child {
+div#cake > div.quantite > div:first-child, div#cake > div.quantite > div:last-child {
     padding: 0 5px ;
 }
-div#cake > div.quantite > div:last-child {
-    padding: 0 5px ;
+div#cake > div.quantite > div:first-child:active, div#cake > div.quantite > div:last-child:active {
+    background-color: black;
+    color:white
 }
+
 div#cake > div.quantite > p {
     display:flex;
     align-items: center;
