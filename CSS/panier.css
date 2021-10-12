@@ -112,11 +112,30 @@ div#CoteProduits > div.produit > div.produits p:last-child {
     font-family: 'Open Sans', sans-serif;
 }
 /* 3eme partie : QUANTITÉ*/
-div#CoteProduits > div.produit > input {
+div.produit > div.quantite {
+    display:flex;
+    border: 0.5px solid black;
+    height : 24px;
+}
+div.produit  > div.quantite > div{
+    display:flex;
+    align-items: center;
+    font-size: max(1.2vw, 20px);
+    cursor: pointer;
+}
+div.produit  > div.quantite > div:first-child {
+    padding: 0 5px ;
+}
+div.produit  > div.quantite > div:last-child {
+    padding: 0 5px ;
+}
+div.produit  > div.quantite > p {
+    display:flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
     font-family: 'Typo-Round-Light' ;
-    height : 20px;
-    width: max(3vw,30px);
+    width: max(3vw,25px);
 }
 /* 4eme partie : PRIX * QUANTITÉ DE UN ARTICLE */
 div#CoteProduits > div.produit > p {

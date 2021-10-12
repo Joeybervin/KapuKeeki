@@ -188,15 +188,8 @@ div#cake > div.quantite > p {
     text-align: center;
     font-family: 'Typo-Round-Light' ;
     width: max(3vw,25px);
-    
-    /* Pour enlever l'action des flèche 
-    -moz-appearance:textfield;
-    border : none*/
 }
-/* div#cake > div.quantite > input::-webkit-outer-spin-button, div#cake > div.quantite >
-input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-} */
+
 /* 4eme partie : PRIX * QUANTITÉ DE UN ARTICLE */
 div#cake > p.total-d-article {
     font-size: max(1.2vw, 11px);
