@@ -71,7 +71,7 @@ function articleDuPrePanier() {
 
    `
    indexArticleASupprimer("img#circle-cancel", listeDesArticlesSeTrouvantDansLePrePanier,articleDuPrePanier)
-   controleDeLaQuantite("div.moins","div.plus",listeDesArticlesSeTrouvantDansLePrePanier)
+   controleDeLaQuantite("div#cake < div.quantite < div.moins","div#cake < div.quantite < div.plus",listeDesArticlesSeTrouvantDansLePrePanier)
 
 }
 /* Renvoie l'index du produits à supprimer du panier */
@@ -137,7 +137,7 @@ function calculSousTotal(sousTotal) {
     return accumulationTotalParArticle
 }
 
-
+/* Pour intercepter le produit sur lequel nous avons cliqué */
 function controleDeLaQuantite(DOMBoutonsMoins,DOMBoutonsPlus,liste) {
 
     var bouttonMoins = document.querySelectorAll(DOMBoutonsMoins)
@@ -157,34 +157,58 @@ function controleDeLaQuantite(DOMBoutonsMoins,DOMBoutonsPlus,liste) {
     }
 } 
 
+/* Pour enlever un produit */
 function moinsUnArticle(i,DOMClickMoins) {
-    var DOMQuantite = document.querySelectorAll("div.quantite > p")
     var panierclient = JSON.parse(localStorage.getItem("cupcakesCommander"))
     var nbrArticlesClient = JSON.parse(localStorage.getItem("totalArticlesPanier"))
-    var nbrAticlesRetirer = panierclient[i].enCommande
+    
     
     DOMClickMoins[i].addEventListener("click", () => {
         
-        nouveaunbrArticlesClient = localStorage.setItem("totalArticlesPanier" , nbrArticlesClient - 1)
+        nouveaunbrArticlesClient = localStorage.setItem("totalArticlesPanier" , nbrArticlesClient -= 1)
         var DOMnouveaunbrArticlesClient = JSON.parse(localStorage.getItem("totalArticlesPanier"))
         /* Puis je l'actualise dans mon DOM */
         panier.innerHTML = DOMnouveaunbrArticlesClient
         nbrArticlepre_panier.innerHTML = DOMnouveaunbrArticlesClient
 
-        nbrAticlesRetirer -= 1
-        localStorage.setItem("cupcakesCommander" , JSON.stringify(panierclient))
-        DOMQuantite[i].innerHTML = nbrAticlesRetirer
         
+        panierclient[i].enCommande -= 1
+        localStorage.setItem("cupcakesCommander" , JSON.stringify(panierclient));
+        articleDuPrePanier()
+
+        if (panierclient[i].enCommande == 0) {
+            /* Je supprime l'article sélectionner de mon localStorage */
+            panierclient.splice(i,1)
+            /* Puis j'actualise cette nouvelle liste */
+            localStorage.setItem("cupcakesCommander" , JSON.stringify(panierclient))
+            articleDuPrePanier()
+        }
 
         
     })
 
 }
 
+/* Pour ajouter un produit */
 
 function plusUnArticle(i,DOMClickPlus) {
 
+    var panierclient = JSON.parse(localStorage.getItem("cupcakesCommander"))
+    var nbrArticlesClient = JSON.parse(localStorage.getItem("totalArticlesPanier"))
+    
+    
     DOMClickPlus[i].addEventListener("click", () => {
-        console.log("plus" +i)
+        nouveaunbrArticlesClient = localStorage.setItem("totalArticlesPanier" , nbrArticlesClient += 1)
+        var DOMnouveaunbrArticlesClient = JSON.parse(localStorage.getItem("totalArticlesPanier"))
+        /* Puis je l'actualise dans mon DOM */
+        panier.innerHTML = DOMnouveaunbrArticlesClient
+        nbrArticlepre_panier.innerHTML = DOMnouveaunbrArticlesClient
+
+        
+        panierclient[i].enCommande += 1
+        localStorage.setItem("cupcakesCommander" , JSON.stringify(panierclient));
+        articleDuPrePanier()
+
+        
     })
 }

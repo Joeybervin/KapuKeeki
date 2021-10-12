@@ -89,7 +89,7 @@ div#tous-articles > div.articles {
     align-content: space-around;
     border-top: 2px solid black;
     border-bottom: 3px solid black;
-    width: min(700px,75vw);
+    width: min(700px,80vw);
     height: max(5.7vw,280px);
 }
 /* séparateur de produits */
@@ -172,21 +172,23 @@ div#cake > div.quantite {
 div#cake > div.quantite > div{
     display:flex;
     align-items: center;
-    font-size: max(1.2vw, 12px);
-    font-weight: bold;
+    font-size: max(1.2vw, 20px);
     cursor: pointer;
 }
 div#cake > div.quantite > div:first-child {
-    padding-left: 5px;
+    padding: 0 5px ;
 }
 div#cake > div.quantite > div:last-child {
-    padding-right: 5px;
+    padding: 0 5px ;
 }
 div#cake > div.quantite > p {
+    display:flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
     font-family: 'Typo-Round-Light' ;
-    width: max(3vw,30px);
-    vertical-align: middle;
+    width: max(3vw,25px);
+    
     /* Pour enlever l'action des flèche 
     -moz-appearance:textfield;
     border : none*/
@@ -205,7 +207,7 @@ div#cake > p.total-d-article {
 div#cake > img#circle-cancel {
     width: 17px;
     align-self: flex-start;
-    margin-right: 10px;
+    margin-right: 5px;
     cursor: pointer;
 }
 

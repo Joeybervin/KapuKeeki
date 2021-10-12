@@ -36,7 +36,12 @@ function articleDuPanier() {
                 <p>${articleAuPanier.prix} €</p>
             </div>
 
-            <input type="number" step="1" name="quantité" value="${articleAuPanier.enCommande}">
+            <div class="quantite">
+                <div class="moins">-</div>
+                <p>${articleAuPanier.enCommande}</p>
+                <div class="plus">+</div>
+            </div>
+            
             <p>${(articleAuPanier.prix * articleAuPanier.enCommande).toFixed(2)} €</p>
             
             <img class="cross-cancel" src="img/svg-icons/close.svg" alt="croix pour supprimer l'article du panier">
